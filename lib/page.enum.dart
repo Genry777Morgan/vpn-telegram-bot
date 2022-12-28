@@ -1,0 +1,4 @@
+enum PageEnum {
+  start,
+  regionChosing
+}
