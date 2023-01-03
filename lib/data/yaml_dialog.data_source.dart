@@ -7,6 +7,8 @@ import 'package:yaml/yaml.dart';
 
 class YamlDialogDataSource extends DialogDataSourceInterface {
   static final _data = _load();
+
+  @override
   String get separator => '/';
   
  static Map _load() {
@@ -42,6 +44,7 @@ class YamlDialogDataSource extends DialogDataSourceInterface {
       layoutData = layoutData[item];
     }
     
-    return layoutData['buttons'][name];
+    print("name $name");
+    return layoutData['buttons'][name] ?? 'error';
   }
 }

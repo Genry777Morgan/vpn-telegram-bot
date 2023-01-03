@@ -12,17 +12,6 @@ class CallbackData {
     this.params,
   });
 
-  static CallbackData fromYaml(String yaml) {
-    return loadYaml(yaml);
-  }
-
-  // Converted to yaml string
-  String toYaml() {
-    var yamlWriter = YAMLWriter();
-
-    var yamlDocString = yamlWriter.write(this.toMap());
-    return yamlDocString;
-  }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,13 +23,20 @@ class CallbackData {
   factory CallbackData.fromMap(Map<String, dynamic> map) {
     return CallbackData(
       page: map['page'] as String,
-      params: map['params'] != null ? List<Param>.from((map['params'] as List<int>).map<Param?>((x) => Param.fromMap(x as Map<String,dynamic>),),) : null,
+      params: map['params'] != null
+          ? List<Param>.from(
+              (map['params'] as List<int>).map<Param?>(
+                (x) => Param.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory CallbackData.fromJson(String source) => CallbackData.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory CallbackData.fromJson(String source) =>
+      CallbackData.fromMap(json.decode(source) as Map<String, dynamic>);
 }
 
 class Param {
@@ -72,5 +68,6 @@ class Param {
 
   String toJson() => json.encode(toMap());
 
-  factory Param.fromJson(String source) => Param.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Param.fromJson(String source) =>
+      Param.fromMap(json.decode(source) as Map<String, dynamic>);
 }
