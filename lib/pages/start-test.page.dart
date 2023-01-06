@@ -7,7 +7,7 @@ import 'package:vpn_telegram_bot/data/layout.enum.dart';
 import 'package:vpn_telegram_bot/page.enum.dart';
 import 'package:vpn_telegram_bot/pages/interfaces/page.interface.dart';
 
-class FirstMenuPage extends BasePage {
+class StartTestPage extends BasePage {
   @override
   TeleDart get teledart => GetIt.I<TeleDart>();
   @override
@@ -16,24 +16,23 @@ class FirstMenuPage extends BasePage {
 
   String get separator => dialogDataSource.separator;
   @override
-  String get name => PageEnum.first_menu.name;
+  String get name => PageEnum.start_test.name;
   @override
-  String get path =>
-      'intro${separator}start${separator}terms_of_use${separator}first_menu';
+  String get path => 'intro${separator}start${separator}terms_of_use${separator}first_menu${separator}test${separator}start_test';
+
   @override
   void register() {
-    // Ожидание колбека
     teledart.onCallbackQuery().listen((event) {
       final data = CallbackData.fromJson(event.data ?? "pg: unknown");
       final page = data.pg;
 
-      // Если колбек дата сооьвеьсвует этой странице
       if (page == name) {
         if (data.prms == null) {
           // TODO throw
           return;
         }
 
+        // Достаю регион из параметров
         final Param? region =
             data.prms?.firstWhere((element) => element.n == 'region');
         if (data.prms == null) {
@@ -41,37 +40,24 @@ class FirstMenuPage extends BasePage {
           return;
         }
 
-        // Клавиатура
+        // Собираем сетку клавиатуры
         inlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard: [
           [
             InlineKeyboardButton(
-                text:
-                    dialogDataSource.getButtonText(path, 'test', LayoutEnum.ru),
-                callback_data:
-                    CallbackData(pg: PageEnum.test.name, prms: [region as Param]) // pp = previous page
-                        .toJson()),
-            InlineKeyboardButton(
-                text:
-                    dialogDataSource.getButtonText(path, 'pay', LayoutEnum.ru),
-                callback_data:
-                    CallbackData(pg: PageEnum.sub_pay.name, prms: [Param(n: 'pp', v: PageEnum.region_selection.name)]).toJson()) // pp = previous page
-         ],
-          [
-            InlineKeyboardButton(
-                text:
-                    dialogDataSource.getButtonText(path, 'back', LayoutEnum.ru),
-                callback_data:
-                    CallbackData(pg: PageEnum.terms_of_use.name, prms: [region]).toJson())
+                text: dialogDataSource.getButtonText(
+                    path, 'back', LayoutEnum.ru),
+                callback_data: CallbackData(
+                    pg: PageEnum.test.name,
+                    prms: [ region as Param ]).toJson())
           ]
         ]);
 
-        // Отправка сообщения пользователю
+        // Отправляет ответ пользователю
         render(
             chatId: event.message?.chat.id,
             renderMethod: (int chatId, String text) {
               edit(chatId, text, event.message?.message_id);
-            },
-            textValues: [region.v]);
+            });
       }
     });
   }

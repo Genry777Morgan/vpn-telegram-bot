@@ -7,7 +7,7 @@ import 'package:vpn_telegram_bot/data/layout.enum.dart';
 import 'package:vpn_telegram_bot/page.enum.dart';
 import 'package:vpn_telegram_bot/pages/interfaces/page.interface.dart';
 
-class RegionSelectionPage extends BasePage {
+class SupportPage extends BasePage {
   @override
   TeleDart get teledart => GetIt.I<TeleDart>();
   @override
@@ -16,36 +16,29 @@ class RegionSelectionPage extends BasePage {
 
   String get separator => dialogDataSource.separator;
   @override
-  String get name => PageEnum.region_selection.name;
+  String get name => PageEnum.support.name;
   @override
-  String get path => 'intro${separator}start${separator}region_selection';
-  @override
-  InlineKeyboardMarkup get inlineKeyboardMarkup =>
-      InlineKeyboardMarkup(inline_keyboard: [
-        [
-          InlineKeyboardButton(
-              text:
-                  dialogDataSource.getButtonText(path, 'vpn.ru', LayoutEnum.ru),
-              callback_data: CallbackData(
-                  pg: PageEnum.terms_of_use.name,
-                  prms: [Param(n: 'region', v: 'ru')]).toJson()),
-          InlineKeyboardButton(
-              text:
-                  dialogDataSource.getButtonText(path, 'vpn.en', LayoutEnum.ru),
-              callback_data: CallbackData(
-                  pg: PageEnum.terms_of_use.name,
-                  prms: [Param(n: 'region', v: 'en')]).toJson())
-        ]
-      ]);
+  String get path => 'main_menu${separator}support';
 
   @override
   void register() {
     teledart.onCallbackQuery().listen((event) {
-      final page =
-          CallbackData.fromJson(event.data ?? "pg: unknown")
-              .pg;
+      final data = CallbackData.fromJson(event.data ?? "pg: unknown");
+      final page = data.pg;
 
       if (page == name) {
+        // Собираем сетку клавиатуры
+        inlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard: [
+          [
+            InlineKeyboardButton(
+                text: dialogDataSource.getButtonText(
+                    path, 'back', LayoutEnum.ru),
+                callback_data: CallbackData(
+                    pg: PageEnum.main_menu.name).toJson())
+          ]
+        ]);
+
+        // Отправляет ответ пользователю
         render(
             chatId: event.message?.chat.id,
             renderMethod: (int chatId, String text) {

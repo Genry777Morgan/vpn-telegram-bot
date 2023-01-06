@@ -30,6 +30,6 @@ class StartPage extends BasePage {
 
   @override
   void register() {
-    teledart.onCommand('start').listen((message) => render(chatId: message.chat.id, renderMethod: add));
+    // Этот метод не предполагает реализаци, ну типо там через команду вход будет, смотрите StartCommandHandler
   }
 }

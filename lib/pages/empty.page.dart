@@ -7,7 +7,7 @@ import 'package:vpn_telegram_bot/data/layout.enum.dart';
 import 'package:vpn_telegram_bot/page.enum.dart';
 import 'package:vpn_telegram_bot/pages/interfaces/page.interface.dart';
 
-class TermsOfUse extends BasePage {
+class EmptyPage extends BasePage {
   @override
   TeleDart get teledart => GetIt.I<TeleDart>();
   @override
@@ -16,9 +16,9 @@ class TermsOfUse extends BasePage {
 
   String get separator => dialogDataSource.separator;
   @override
-  String get name => PageEnum.terms_of_use.name;
+  String get name => PageEnum.empty.name;
   @override
-  String get path => 'intro${separator}start${separator}terms_of_use';
+  String get path => 'empty';
 
   @override
   void register() {
@@ -32,36 +32,26 @@ class TermsOfUse extends BasePage {
           return;
         }
 
-        final Param? region =
-            data.prms?.firstWhere((element) => element.n == 'region');
+      // Достаю регион из параметров
+        final Param? previousPageName = data.prms
+            ?.firstWhere((element) => element.n == 'pp'); // pp = previous page
         if (data.prms == null) {
           // TODO throw
           return;
         }
 
-        inlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard: [
+        // Собираем сетку клавиатуры
+        inlineKeyboardMarkup = 
+        InlineKeyboardMarkup(inline_keyboard: [
           [
             InlineKeyboardButton(
-                text:
-                    dialogDataSource.getButtonText(path, 'disagree', LayoutEnum.ru),
+                text: dialogDataSource.getButtonText(path, 'back', LayoutEnum.ru),
                 callback_data:
-                    CallbackData(pg: PageEnum.terms_of_use_denial.name,
-                    prms: [ region as Param ]).toJson()),
-            InlineKeyboardButton(
-                text: dialogDataSource.getButtonText(
-                    path, 'agree', LayoutEnum.ru),
-                callback_data: CallbackData(
-                    pg: PageEnum.first_menu.name,
-                    prms: [ region ]).toJson())
-          ], [
-
-InlineKeyboardButton(
-    text: dialogDataSource.getButtonText(
-        path, 'back', LayoutEnum.ru),
-    callback_data: CallbackData(
-        pg: PageEnum.region_selection.name,).toJson())]
+                    CallbackData(pg: (previousPageName as Param).v).toJson())
+          ]
         ]);
 
+        // Отправляет ответ пользователю
         render(
             chatId: event.message?.chat.id,
             renderMethod: (int chatId, String text) {

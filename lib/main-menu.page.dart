@@ -7,7 +7,7 @@ import 'package:vpn_telegram_bot/data/layout.enum.dart';
 import 'package:vpn_telegram_bot/page.enum.dart';
 import 'package:vpn_telegram_bot/pages/interfaces/page.interface.dart';
 
-class RegionSelectionPage extends BasePage {
+class MainMenuPage extends BasePage {
   @override
   TeleDart get teledart => GetIt.I<TeleDart>();
   @override
@@ -16,27 +16,26 @@ class RegionSelectionPage extends BasePage {
 
   String get separator => dialogDataSource.separator;
   @override
-  String get name => PageEnum.region_selection.name;
+  String get name => PageEnum.main_menu.name;
   @override
-  String get path => 'intro${separator}start${separator}region_selection';
+  String get path =>
+      'main_menu';
   @override
-  InlineKeyboardMarkup get inlineKeyboardMarkup =>
-      InlineKeyboardMarkup(inline_keyboard: [
-        [
-          InlineKeyboardButton(
-              text:
-                  dialogDataSource.getButtonText(path, 'vpn.ru', LayoutEnum.ru),
-              callback_data: CallbackData(
-                  pg: PageEnum.terms_of_use.name,
-                  prms: [Param(n: 'region', v: 'ru')]).toJson()),
-          InlineKeyboardButton(
-              text:
-                  dialogDataSource.getButtonText(path, 'vpn.en', LayoutEnum.ru),
-              callback_data: CallbackData(
-                  pg: PageEnum.terms_of_use.name,
-                  prms: [Param(n: 'region', v: 'en')]).toJson())
-        ]
-      ]);
+   InlineKeyboardMarkup get inlineKeyboardMarkup => InlineKeyboardMarkup(inline_keyboard: [
+    [
+      InlineKeyboardButton(
+          text:
+              dialogDataSource.getButtonText(path, 'subscriptions', LayoutEnum.ru),
+          callback_data:
+              CallbackData(pg: PageEnum.sub_pay.name, prms: [Param(n: 'pp', v: name)]) // pp = previous page
+                  .toJson()),
+      InlineKeyboardButton(
+          text:
+              dialogDataSource.getButtonText(path, 'support', LayoutEnum.ru),
+          callback_data:
+              CallbackData(pg: PageEnum.support.name).toJson()) // TODO
+    ]
+  ]);
 
   @override
   void register() {

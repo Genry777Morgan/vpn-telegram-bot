@@ -16,7 +16,7 @@ abstract class BasePage {
   DialogDataSourceInterface get dialogDataSource;
   String get name;
   String get path;
-  late InlineKeyboardMarkup inlineKeyboardMarkup;
+  late InlineKeyboardMarkup? inlineKeyboardMarkup;
 
   void register();
 

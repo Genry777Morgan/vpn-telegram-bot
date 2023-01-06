@@ -6,6 +6,12 @@ enum PageEnum {
   terms_of_use,
   terms_of_use_denial,
   first_menu,
+  main_menu,
+  sub_pay,
+  support,
+  test,
+  start_test,
+  empty,
 }
 
 /* extension PageEnumExtension on PageEnum { */
