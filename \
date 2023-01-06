@@ -26,7 +26,7 @@ class CallbackData {
       pg: map['pg'] as String,
       prms: map['prms'] != null
           ? List<Param>.from(
-              (map['prms']).map<Param?>(
+              (map['params'])?.map<Param?>(
                 (x) => Param.fromMap(x as Map<String, dynamic>),
               ),
             )

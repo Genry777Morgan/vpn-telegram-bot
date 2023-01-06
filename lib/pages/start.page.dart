@@ -7,7 +7,7 @@ import 'package:vpn_telegram_bot/data/layout.enum.dart';
 import 'package:vpn_telegram_bot/page.enum.dart';
 import 'package:vpn_telegram_bot/pages/interfaces/page.interface.dart';
 
-class StartPage extends PageInterface {
+class StartPage extends BasePage {
   @override
   TeleDart get teledart => GetIt.I<TeleDart>();
   @override
@@ -24,12 +24,12 @@ class StartPage extends PageInterface {
           text: dialogDataSource.getButtonText(
               path, 'continue', LayoutEnum.ru),
           callback_data:
-              CallbackData(page: PageEnum.region_selection.name).toJson())
+              CallbackData(pg: PageEnum.region_selection.name).toJson())
     ]
   ]);
 
   @override
   void register() {
-    teledart.onCommand('start').listen((message) => render(message.chat.id, add));
+    teledart.onCommand('start').listen((message) => render(chatId: message.chat.id, renderMethod: add));
   }
 }

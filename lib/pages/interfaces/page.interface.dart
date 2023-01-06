@@ -3,8 +3,8 @@ import 'package:teledart/teledart.dart';
 import 'package:vpn_telegram_bot/data/interfaces/dialog.data_source.interface.dart';
 import 'package:vpn_telegram_bot/data/layout.enum.dart';
 
-abstract class PageInterface {
-  PageInterface() {
+abstract class BasePage {
+  BasePage() {
     try {
       register();
     } catch (exception) {
@@ -16,18 +16,26 @@ abstract class PageInterface {
   DialogDataSourceInterface get dialogDataSource;
   String get name;
   String get path;
-  InlineKeyboardMarkup get inlineKeyboardMarkup;
+  late InlineKeyboardMarkup inlineKeyboardMarkup;
 
   void register();
+
   /// renderMethod by default PageInterface.add(chatId, text)
-  void render(int? chatId, Function(int, String) renderMethod) {
+  void render(
+      {int? chatId,
+      required Function(int, String) renderMethod,
+      List<String>? textValues}) {
+    assert(textValues != null);
     try {
       if (chatId == null) {
         // TODO error log
       }
 
-      final text = dialogDataSource.getMessage(path, LayoutEnum.ru);
+      var text = dialogDataSource.getMessage(path, LayoutEnum.ru);
 
+      if (textValues != null) {
+        text = stringf(text, textValues);
+      }
       renderMethod(chatId as int, text);
     } catch (exception, stacktrace) {
       // TODO remove send massege
@@ -35,6 +43,22 @@ abstract class PageInterface {
           chatId, '```${exception.toString()}\n${stacktrace.toString()}```',
           parse_mode: 'MarkdownV2');
     }
+  }
+
+  String stringf(String text, List<String> values) {
+    String result = '';
+
+    List<String> textParts = text.split('%');
+    print("text valuest: $textParts");
+    for (var i = 0; i < textParts.length /* */; i++){
+      if (i < values.length && i != textParts.length - 1) {
+        result += textParts[i] + values[i];
+      } else {
+        result += textParts[i];
+      }
+    }
+
+    return result;
   }
 
   void add(int chatId, String text) {
@@ -45,7 +69,10 @@ abstract class PageInterface {
     if (messageId == null) {
       // TODO trow error
     }
-    teledart.editMessageText(text, chat_id: chatId, message_id: messageId, reply_markup: inlineKeyboardMarkup);
+    teledart.editMessageText(text,
+        chat_id: chatId,
+        message_id: messageId,
+        reply_markup: inlineKeyboardMarkup);
   }
 
   void consoleLog(Type className) {

@@ -7,7 +7,9 @@ import 'package:vpn_telegram_bot/configurations.dart';
 import 'package:vpn_telegram_bot/data/interfaces/dialog.data_source.interface.dart';
 import 'package:vpn_telegram_bot/data/yaml_dialog.data_source.dart';
 import 'package:vpn_telegram_bot/pages/region-selection.page.dart';
+import 'package:vpn_telegram_bot/pages/first-menu.page.dart';
 import 'package:vpn_telegram_bot/pages/start.page.dart';
+import 'package:vpn_telegram_bot/pages/terms-of-use.page.dart';
 
 Future<void> main() async {
   var botToken = Configurations.config['ApiToken'];
@@ -24,6 +26,8 @@ Future<void> main() async {
   GetIt.I.registerSingleton<DialogDataSourceInterface>(YamlDialogDataSource());
   GetIt.I.registerSingleton<StartPage>(StartPage());
   GetIt.I.registerSingleton<RegionSelectionPage>(RegionSelectionPage());
+  GetIt.I.registerSingleton<TermsOfUse>(TermsOfUse());
+  GetIt.I.registerSingleton<FirstMenuPage>(FirstMenuPage());
 
   //endregion
 
@@ -34,7 +38,7 @@ Future<void> main() async {
             [
               InlineKeyboardButton(
                   text: 'send call back',
-                  callback_data: CallbackData(page: "yam_call_back").toJson())
+                  callback_data: CallbackData(pg: "yam_call_back").toJson())
             ]
           ])));
 

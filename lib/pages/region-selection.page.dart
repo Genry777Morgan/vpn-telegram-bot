@@ -7,7 +7,7 @@ import 'package:vpn_telegram_bot/data/layout.enum.dart';
 import 'package:vpn_telegram_bot/page.enum.dart';
 import 'package:vpn_telegram_bot/pages/interfaces/page.interface.dart';
 
-class RegionSelectionPage extends PageInterface {
+class RegionSelectionPage extends BasePage {
   @override
   TeleDart get teledart => GetIt.I<TeleDart>();
   @override
@@ -26,26 +26,31 @@ class RegionSelectionPage extends PageInterface {
           InlineKeyboardButton(
               text:
                   dialogDataSource.getButtonText(path, 'vpn.ru', LayoutEnum.ru),
-              callback_data: CallbackData(page: PageEnum.terms_of_use.name, params:  [Param(name: 'region', value: 'ru')] ).toJson()),
+              callback_data: CallbackData(
+                  pg: PageEnum.terms_of_use.name,
+                  prms: [Param(n: 'region', v: 'ru')]).toJson()),
           InlineKeyboardButton(
               text:
                   dialogDataSource.getButtonText(path, 'vpn.en', LayoutEnum.ru),
-              callback_data: CallbackData(page: PageEnum.terms_of_use.name, params:  [Param(name: 'region', value: 'en')]).toJson())
+              callback_data: CallbackData(
+                  pg: PageEnum.terms_of_use.name,
+                  prms: [Param(n: 'region', v: 'en')]).toJson())
         ]
       ]);
 
   @override
   void register() {
     teledart.onCallbackQuery().listen((event) {
-
       final page =
-          CallbackData.fromJson(event.data ?? "page: unnown" /* TODO try it */)
-              .page;
+          CallbackData.fromJson(event.data ?? "pg: unnown" /* TODO try it */)
+              .pg;
 
       if (page == name) {
-        render(event.message?.chat.id, (int chatId, String text) {
-          edit(chatId, text, event.message?.message_id);
-        });
+        render(
+            chatId: event.message?.chat.id,
+            renderMethod: (int chatId, String text) {
+              edit(chatId, text, event.message?.message_id);
+            });
       }
     });
   }

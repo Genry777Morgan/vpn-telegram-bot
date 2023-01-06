@@ -3,7 +3,9 @@
 enum PageEnum {
   start,
   region_selection,
-  terms_of_use, 
+  terms_of_use,
+  terms_of_use_denial,
+  first_menu,
 }
 
 /* extension PageEnumExtension on PageEnum { */
