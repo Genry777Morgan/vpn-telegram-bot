@@ -25,7 +25,7 @@ class StartPage extends BasePage {
 
   @override
   void register() {
-    teledart.onCommand('start2').listen((message) {
+    teledart.onCommand('start').listen((message) {
       Exeptor.tryCatch(() async {
         assert(message.from != null); // Создаем ошибки
 

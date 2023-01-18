@@ -1,7 +1,7 @@
 version: "3.9"
 services:
-  web:
-    container_name: vpnrestapi
+  telegram-bot:
+    container_name: vpn-telegram-bot
     build: .
     ports:
       - "8081:8081"

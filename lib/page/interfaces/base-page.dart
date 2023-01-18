@@ -70,14 +70,19 @@ abstract class BasePage {
 
   ///
   ///
-  void send(int? chatId, String text) {
-    teledart.sendMessage(chatId, text, reply_markup: inlineKeyboardMarkup);
+  Future send(int? chatId, String text) async {
+    await teledart.sendMessage(chatId, text,
+        reply_markup: inlineKeyboardMarkup);
   }
 
   /// send a photo
   ///
   Future sendPhoto(int? chatId, dynamic photo) async {
     await teledart.sendPhoto(chatId, photo);
+  }
+
+  Future sendFile(int? chatId, dynamic file) async {
+    await teledart.sendDocument(chatId, file);
   }
 
   /// удаляет старое сообщкние и отправляет новоре

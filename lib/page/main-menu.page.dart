@@ -47,7 +47,9 @@ class MainMenuPage extends BasePage {
                 .get(Uri.http(host, "/users/${event.message?.from?.id}"));
 
             print(response.body);
-            var responseBody = jsonDecode(response.body)['freePeriodUsed'];
+            var responseBody = jsonDecode(response.body);
+            freePeriodUsed =
+                responseBody['freePeriodUsed'].toString().parseBool();
           }
 
           final buttonGet = InlineKeyboardButton(

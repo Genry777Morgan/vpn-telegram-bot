@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get_it/get_it.dart';
 import 'dart:io' as ia;
 import 'package:http/http.dart' as http;
@@ -56,7 +58,7 @@ class ConfigPage extends BasePage {
                 .get(Uri.http(host, "/users/${event.from.id}/qrCode"));
 
             renderMethod = (int chatId, String text) async {
-              final file = ia.File('file.txt');
+              final file = ia.File('qr.png');
               file.writeAsBytesSync(response.body.codeUnits);
 
               final chatId = event.message?.chat.id;
@@ -66,14 +68,16 @@ class ConfigPage extends BasePage {
             };
           } else if (type?.toLowerCase() == 'config') {
             var response = await http
-                .get(Uri.http(host, "/users/${event.from.id}/qrCode"));
+                .get(Uri.http(host, "/users/${event.from.id}/config"));
+
+            print(response.body);
+
+            var configFileBody = jsonDecode(response.body)['configFile'];
 
             renderMethod = (int chatId, String text) async {
-              final file = ia.File('file.txt');
-              file.writeAsBytesSync(response.body.codeUnits);
-
-              final chatId = event.message?.chat.id;
-              await sendPhoto(chatId, file);
+              final file = ia.File('config.conf');
+              file.writeAsStringSync(configFileBody);
+              await sendFile(chatId, file);
 
               replase(chatId, text, event.message?.message_id);
             };
