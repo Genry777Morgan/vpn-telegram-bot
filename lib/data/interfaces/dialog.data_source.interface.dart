@@ -1,6 +1,4 @@
-﻿import 'dart:io';
-
-import 'package:vpn_telegram_bot/data/layout.enum.dart';
+﻿import 'package:vpn_telegram_bot/data/layout.enum.dart';
 
 abstract class DialogDataSourceInterface {
   String get separator;

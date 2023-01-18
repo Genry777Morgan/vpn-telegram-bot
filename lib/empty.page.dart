@@ -5,9 +5,9 @@ import 'package:vpn_telegram_bot/callback_data.dart';
 import 'package:vpn_telegram_bot/data/interfaces/dialog.data_source.interface.dart';
 import 'package:vpn_telegram_bot/data/layout.enum.dart';
 import 'package:vpn_telegram_bot/page.enum.dart';
-import 'package:vpn_telegram_bot/pages/interfaces/page.interface.dart';
+import 'package:vpn_telegram_bot/page/interfaces/base-page.dart';
 
-class SupportPage extends BasePage {
+class EmptyPage extends BasePage {
   @override
   TeleDart get teledart => GetIt.I<TeleDart>();
   @override
@@ -16,9 +16,9 @@ class SupportPage extends BasePage {
 
   String get separator => dialogDataSource.separator;
   @override
-  String get name => PageEnum.support.name;
+  String get name => PageEnum.empty.name;
   @override
-  String get path => 'main_menu${separator}support';
+  String get path => 'empty';
 
   @override
   void register() {
@@ -27,14 +27,27 @@ class SupportPage extends BasePage {
       final page = data.pg;
 
       if (page == name) {
+        if (data.prms == null) {
+          // TODO throw
+          return;
+        }
+
+        // Достаю регион из параметров
+        final Param? previousPageName = data.prms
+            ?.firstWhere((element) => element.n == 'pp'); // pp = previous page
+        if (data.prms == null) {
+          // TODO throw
+          return;
+        }
+
         // Собираем сетку клавиатуры
         inlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard: [
           [
             InlineKeyboardButton(
-                text: dialogDataSource.getButtonText(
-                    path, 'back', LayoutEnum.ru),
-                callback_data: CallbackData(
-                    pg: PageEnum.main_menu.name).toJson())
+                text:
+                    dialogDataSource.getButtonText(path, 'back', LayoutEnum.ru),
+                callback_data:
+                    CallbackData(pg: (previousPageName as Param).v).toJson())
           ]
         ]);
 
