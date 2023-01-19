@@ -281,10 +281,10 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-  teledart:
+ teleDart:
     dependency: "direct main"
     description:
-      name: teledart
+      name:teleDart
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.4"
@@ -323,6 +323,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.1"
+  uuid:
+    dependency: "direct main"
+    description:
+      name: uuid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.7"
   vm_service:
     dependency: transitive
     description:

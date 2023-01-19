@@ -16,5 +16,6 @@ dependencies:
   dart_printf: ^0.6.0
   get_it: ^7.2.0
   teledart: ^0.3.4
+  uuid: ^3.0.7
   yaml: ^3.1.0
   yaml_writer: 1.0.1
