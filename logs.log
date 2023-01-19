@@ -1,0 +1,173 @@
+2023-01-19 21:16:21.158541  [Error] LateInitializationError: Field 'teleDart' has not been initialized.
+#0      Singlton.teleDart (package:vpn_telegram_bot/singlton.dart)
+#1      Page.send (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:113:20)
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:82:32)
+#3      new Page.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:46:13)
+#4      Registrator.regCommand.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart:20:13)
+#5      _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#6      _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#7      _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#8      _ForwardingStreamSubscription._add (dart:async/stream_pipe.dart:123:11)
+#9      _MapStream._handleData (dart:async/stream_pipe.dart:218:10)
+#10     _ForwardingStreamSubscription._handleData (dart:async/stream_pipe.dart:153:13)
+#11     _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#12     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#13     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#14     _ForwardingStreamSubscription._add (dart:async/stream_pipe.dart:123:11)
+#15     _WhereStream._handleData (dart:async/stream_pipe.dart:195:12)
+#16     _ForwardingStreamSubscription._handleData (dart:async/stream_pipe.dart:153:13)
+#17     _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#18     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#19     _DelayedData.perform (dart:async/stream_impl.dart:515:14)
+#20     _PendingEvents.handleNext (dart:async/stream_impl.dart:620:11)
+#21     _PendingEvents.schedule.<anonymous closure> (dart:async/stream_impl.dart:591:7)
+#22     _microtaskLoop (dart:async/schedule_microtask.dart:40:21)
+#23     _startMicrotaskLoop (dart:async/schedule_microtask.dart:49:5)
+#24     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:122:13)
+#25     _Timer._runTimers (dart:isolate-patch/timer_impl.dart:405:11)
+#26     _Timer._handleMessage (dart:isolate-patch/timer_impl.dart:429:5)
+#27     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:192:12)
+
+2023-01-19 21:17:02.656823  [Error] LateInitializationError: Field 'teleDart' has not been initialized.
+#0      Singlton.teleDart (package:vpn_telegram_bot/singlton.dart)
+#1      Page.send (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:113:20)
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:82:32)
+#3      new Page.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:46:13)
+#4      Registrator.regCommand.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart:20:13)
+#5      _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#6      _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#7      _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#8      _ForwardingStreamSubscription._add (dart:async/stream_pipe.dart:123:11)
+#9      _MapStream._handleData (dart:async/stream_pipe.dart:218:10)
+#10     _ForwardingStreamSubscription._handleData (dart:async/stream_pipe.dart:153:13)
+#11     _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#12     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#13     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#14     _ForwardingStreamSubscription._add (dart:async/stream_pipe.dart:123:11)
+#15     _WhereStream._handleData (dart:async/stream_pipe.dart:195:12)
+#16     _ForwardingStreamSubscription._handleData (dart:async/stream_pipe.dart:153:13)
+#17     _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#18     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#19     _DelayedData.perform (dart:async/stream_impl.dart:515:14)
+#20     _PendingEvents.handleNext (dart:async/stream_impl.dart:620:11)
+#21     _PendingEvents.schedule.<anonymous closure> (dart:async/stream_impl.dart:591:7)
+#22     _microtaskLoop (dart:async/schedule_microtask.dart:40:21)
+#23     _startMicrotaskLoop (dart:async/schedule_microtask.dart:49:5)
+#24     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:122:13)
+#25     _Timer._runTimers (dart:isolate-patch/timer_impl.dart:405:11)
+#26     _Timer._handleMessage (dart:isolate-patch/timer_impl.dart:429:5)
+#27     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:192:12)
+
+2023-01-19 21:17:09.563224  [Error] LateInitializationError: Field 'teleDart' has not been initialized.
+#0      Singlton.teleDart (package:vpn_telegram_bot/singlton.dart)
+#1      Page.send (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:113:20)
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:82:32)
+#3      new Page.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:46:13)
+#4      Registrator.regCommand.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart:20:13)
+#5      _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#6      _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#7      _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#8      _ForwardingStreamSubscription._add (dart:async/stream_pipe.dart:123:11)
+#9      _MapStream._handleData (dart:async/stream_pipe.dart:218:10)
+#10     _ForwardingStreamSubscription._handleData (dart:async/stream_pipe.dart:153:13)
+#11     _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#12     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#13     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#14     _ForwardingStreamSubscription._add (dart:async/stream_pipe.dart:123:11)
+#15     _WhereStream._handleData (dart:async/stream_pipe.dart:195:12)
+#16     _ForwardingStreamSubscription._handleData (dart:async/stream_pipe.dart:153:13)
+#17     _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#18     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#19     _DelayedData.perform (dart:async/stream_impl.dart:515:14)
+#20     _PendingEvents.handleNext (dart:async/stream_impl.dart:620:11)
+#21     _PendingEvents.schedule.<anonymous closure> (dart:async/stream_impl.dart:591:7)
+#22     _microtaskLoop (dart:async/schedule_microtask.dart:40:21)
+#23     _startMicrotaskLoop (dart:async/schedule_microtask.dart:49:5)
+#24     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:122:13)
+#25     _Timer._runTimers (dart:isolate-patch/timer_impl.dart:405:11)
+#26     _Timer._handleMessage (dart:isolate-patch/timer_impl.dart:429:5)
+#27     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:192:12)
+
+2023-01-19 21:18:43.782595  [Error] LateInitializationError: Field 'teleDart' has not been initialized.
+#0      Singlton.teleDart (package:vpn_telegram_bot/singlton.dart)
+#1      Page.send (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:113:20)
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:82:32)
+#3      new Page.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:46:13)
+#4      Registrator.regCommand.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart:20:13)
+#5      _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#6      _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#7      _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#8      _ForwardingStreamSubscription._add (dart:async/stream_pipe.dart:123:11)
+#9      _MapStream._handleData (dart:async/stream_pipe.dart:218:10)
+#10     _ForwardingStreamSubscription._handleData (dart:async/stream_pipe.dart:153:13)
+#11     _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#12     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#13     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#14     _ForwardingStreamSubscription._add (dart:async/stream_pipe.dart:123:11)
+#15     _WhereStream._handleData (dart:async/stream_pipe.dart:195:12)
+#16     _ForwardingStreamSubscription._handleData (dart:async/stream_pipe.dart:153:13)
+#17     _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#18     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#19     _DelayedData.perform (dart:async/stream_impl.dart:515:14)
+#20     _PendingEvents.handleNext (dart:async/stream_impl.dart:620:11)
+#21     _PendingEvents.schedule.<anonymous closure> (dart:async/stream_impl.dart:591:7)
+#22     _microtaskLoop (dart:async/schedule_microtask.dart:40:21)
+#23     _startMicrotaskLoop (dart:async/schedule_microtask.dart:49:5)
+#24     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:122:13)
+#25     _Timer._runTimers (dart:isolate-patch/timer_impl.dart:405:11)
+#26     _Timer._handleMessage (dart:isolate-patch/timer_impl.dart:429:5)
+#27     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:192:12)
+
+2023-01-19 21:18:56.978125  [Error] LateInitializationError: Field 'teleDart' has not been initialized.
+#0      Singlton.teleDart (package:vpn_telegram_bot/singlton.dart)
+#1      Page.send (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:113:20)
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:82:32)
+#3      new Page.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:46:13)
+#4      Registrator.regCommand.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart:20:13)
+#5      _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#6      _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#7      _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#8      _ForwardingStreamSubscription._add (dart:async/stream_pipe.dart:123:11)
+#9      _MapStream._handleData (dart:async/stream_pipe.dart:218:10)
+#10     _ForwardingStreamSubscription._handleData (dart:async/stream_pipe.dart:153:13)
+#11     _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#12     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#13     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#14     _ForwardingStreamSubscription._add (dart:async/stream_pipe.dart:123:11)
+#15     _WhereStream._handleData (dart:async/stream_pipe.dart:195:12)
+#16     _ForwardingStreamSubscription._handleData (dart:async/stream_pipe.dart:153:13)
+#17     _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#18     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#19     _DelayedData.perform (dart:async/stream_impl.dart:515:14)
+#20     _PendingEvents.handleNext (dart:async/stream_impl.dart:620:11)
+#21     _PendingEvents.schedule.<anonymous closure> (dart:async/stream_impl.dart:591:7)
+#22     _microtaskLoop (dart:async/schedule_microtask.dart:40:21)
+#23     _startMicrotaskLoop (dart:async/schedule_microtask.dart:49:5)
+#24     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:122:13)
+#25     _Timer._runTimers (dart:isolate-patch/timer_impl.dart:405:11)
+#26     _Timer._handleMessage (dart:isolate-patch/timer_impl.dart:429:5)
+#27     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:192:12)
+
+2023-01-19 21:25:19.544714 /380055934/ [59323804-9837-11ed-be4d-73bc631fb136] opened
+2023-01-19 21:27:39.934300 /380055934/ [59323804-9837-11ed-be4d-73bc631fb136] opened
+2023-01-19 21:27:43.214093 /380055934/ [59323804-9837-11ed-be4d-73bc631fb136] opened
+2023-01-19 21:27:46.623212 /380055934/ [59323804-9837-11ed-be4d-73bc631fb136] opened
+2023-01-19 22:50:20.397945 /380055934/ [start] called
+2023-01-19 22:50:23.481562 /380055934/ [43530b20-9843-11ed-9a43-6de344a7a6cc] called
+2023-01-19 22:50:24.976178 /380055934/ [43530b21-9843-11ed-9a43-6de344a7a6cc] called
+2023-01-19 22:50:25.902012 /380055934/ [4352bd00-9843-11ed-9a43-6de344a7a6cc] called
+2023-01-19 22:50:26.758269 /380055934/ [43530b21-9843-11ed-9a43-6de344a7a6cc] called
+2023-01-19 22:50:29.110173 /380055934/ [43530b23-9843-11ed-9a43-6de344a7a6cc] called
+2023-01-19 22:50:48.549618 /701897037/ [start] called
+2023-01-19 22:50:48.563925 /701897037/ [start] called
+2023-01-19 22:50:48.565283 /701897037/ [start] called
+2023-01-19 22:50:57.299006 /701897037/ [5590fef2-9843-11ed-8c59-9b5fcfc55dac] called
+2023-01-19 22:53:23.906754 /380055934/ [start] called
+2023-01-19 22:53:25.162875 /380055934/ [b1a31842-9843-11ed-9b44-67f96d6d4623] called
+2023-01-19 22:53:38.528278 /380055934/ [start] called
+2023-01-19 22:53:39.704743 /380055934/ [b1a2f130-9843-11ed-9b44-67f96d6d4623] called
+2023-01-19 22:53:41.563195 /380055934/ [start] called
+2023-01-19 22:53:42.603678 /380055934/ [b1a31842-9843-11ed-9b44-67f96d6d4623] called
+2023-01-19 22:53:43.674617 /380055934/ [start] called
+2023-01-19 22:53:44.477513 /380055934/ [b1a2f130-9843-11ed-9b44-67f96d6d4623] called
+2023-01-19 22:53:45.668935 /380055934/ [b1a31840-9843-11ed-9b44-67f96d6d4623] called

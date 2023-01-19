@@ -19,7 +19,6 @@ Future<void> main() async {
   GetIt.I.registerSingleton<TeleDart>(TeleDart(botToken, Event(username!)));
 
   final teledart = GetIt.I<TeleDart>();
-
   //endregion
 
   //region setup DI
@@ -27,22 +26,55 @@ Future<void> main() async {
   GetIt.I.registerSingleton<DialogDataSourceInterface>(YamlDialogDataSource());
 
   //endregion
+  var rate = Page(
+      text: Text.function((pageMessage, user) => 'empty'),
+      renderMethod: Page.edit);
+  var dashBoard = Page(
+    text: Text.function((pageMessage, user) => 'empty'),
+    renderMethod: Page.edit,
+  );
 
-  var timedcostil = Page(text: Text.string('a'));
+  var mainMenu = Page(name: 'main-menu', text: Text.string('some text'));
 
-  var firstPage =
-      Page(name: 'main-menu', text: Text.string('some text'), markup: [
+  mainMenu.changeKeyboard([
     [
       MyGigaButton.openPage(
-          text: 'далее',
+          text: 'Далее',
           page: Page(
-              name: 'second-page',
+              name: 'Тест',
               text: Text.function((pageMessage, user) => 'Твой id ${user.id}'),
-              renderMethod: timedcostil.edit))
+              renderMethod: Page.edit))
+    ],
+    [
+      MyGigaButton.openPage(
+          text: 'Получить ВПН',
+          page: Page(
+              text: Text.function((pageMessage, user) => ''),
+              renderMethod: Page.edit))
+    ],
+    [
+      MyGigaButton.openPage(text: 'Тарифы', page: rate),
+      MyGigaButton.openPage(text: 'Личный кабинет', page: dashBoard),
     ]
   ]);
 
-  Registrator.regCommand('start', firstPage.render);
+  rate.changeKeyboard([
+    [
+      MyGigaButton.openPage(
+          text: '', page: Page(text: Text.string('Just Page'))),
+      MyGigaButton.openPage(text: 'Назад', page: mainMenu)
+    ]
+  ]);
+
+  dashBoard.changeKeyboard([
+    [
+      MyGigaButton.openPage(
+          text: '', page: Page(text: Text.string('Just Page'))),
+      MyGigaButton.openPage(text: 'Назад', page: mainMenu)
+    ]
+  ]);
+
+  Registrator.regCommand('start', mainMenu.render);
 
   Registrator.createLisener();
   teledart.start();

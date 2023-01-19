@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:get_it/get_it.dart';
 import 'package:teledart/model.dart';
 import 'dart:io' as io;
@@ -26,37 +28,56 @@ class Text {
 
 class Page {
   String? name;
+  late Text _text;
+  late List<List<MyGigaButton>>? _keyboard;
 
   final _key = uuid.v1().toString();
-  late final Future<dynamic> Function(Message, User) render;
+  late Future<dynamic> Function(Message, User) render;
   late final TeleDart teleDart;
+  Future<dynamic> Function(
+      TeleDart, Message, User, String, InlineKeyboardMarkup?)? _renderMethod;
 
   Page({
     this.name,
     required Text text,
-    List<List<MyGigaButton>>? markup,
-    Future<dynamic> Function(Message, User, String, InlineKeyboardMarkup?)?
+    List<List<MyGigaButton>>? keyboard, // TODO create keyboard class
+    Future<dynamic> Function(
+            TeleDart, Message, User, String, InlineKeyboardMarkup?)?
         renderMethod,
   }) {
-    // region DI
-    teleDart = GetIt.I<TeleDart>();
-    // endregion
+    // DI
 
+    teleDart = GetIt.I<TeleDart>();
+
+    // endregion
+    _text = text;
+    _keyboard = keyboard;
+    _renderMethod = renderMethod;
+
+    _constructRender();
+
+    Registrator.registrate(_key, render);
+  }
+
+  void changeKeyboard(List<List<MyGigaButton>>? keyboard) {
+    _keyboard = keyboard;
+    _constructRender();
+  }
+
+  void _constructRender() {
     render = (Message pageMessage, User user) async {
       await _render(
           pageMessage: pageMessage,
           user: user,
-          getText: text.getContent,
-          markup: markup == null
+          getText: _text.getContent,
+          markup: _keyboard == null
               ? null
               : InlineKeyboardMarkup(
-                  inline_keyboard: markup
+                  inline_keyboard: _keyboard!
                       .map((e) => e.map((e) => e.convertToTeegram()).toList())
                       .toList()),
-          renderMethod: renderMethod);
+          renderMethod: _renderMethod);
     };
-
-    Registrator.registrate(_key, render);
   }
 
   String getKey() {
@@ -71,7 +92,8 @@ class Page {
     required User user,
     required String Function(Message, User) getText,
     InlineKeyboardMarkup? markup,
-    Future<dynamic> Function(Message, User, String, InlineKeyboardMarkup?)?
+    Future<dynamic> Function(
+            TeleDart, Message, User, String, InlineKeyboardMarkup?)?
         renderMethod,
   }) async {
     renderMethod ??= send;
@@ -79,8 +101,12 @@ class Page {
     try {
       assert(pageMessage.chat.id != null);
 
-      return await renderMethod(
-          pageMessage, user, getText(pageMessage, user), markup);
+      String text = getText(pageMessage, user);
+      if (text == '' || text == null) {
+        text = 'empty';
+      }
+
+      return await renderMethod(teleDart, pageMessage, user, text, markup);
     } catch (exception, stacktrace) {
       JustGay.loger('Error',
           body: '${exception.toString()}\n${stacktrace.toString()}');
@@ -108,25 +134,25 @@ class Page {
 
   ///
   ///
-  Future send(Message pageMessage, User user, String text,
-      InlineKeyboardMarkup? markup) async {
+  static Future send(TeleDart teleDart, Message pageMessage, User user,
+      String text, InlineKeyboardMarkup? markup) async {
     await teleDart.sendMessage(pageMessage.chat.id, text, reply_markup: markup);
   }
 
   /// send a photo
   ///
-  Future sendPhoto(int? chatId, dynamic photo) async {
+  static Future sendPhoto(TeleDart teleDart, int? chatId, dynamic photo) async {
     await teleDart.sendPhoto(chatId, photo);
   }
 
-  Future sendFile(int? chatId, dynamic file) async {
+  static Future sendFile(TeleDart teleDart, int? chatId, dynamic file) async {
     await teleDart.sendDocument(chatId, file);
   }
 
   /// удаляет старое сообщкние и отправляет новоре
   /// Для тех случаев когда нужно сместить интерфейс в низ диалога
-  Future replase(int? chatId, String text, InlineKeyboardMarkup markup,
-      int? messageId) async {
+  static Future replase(TeleDart teleDart, int? chatId, String text,
+      InlineKeyboardMarkup markup, int? messageId) async {
     if (messageId == null) {
       JustGay.loger('Warning',
           body: 'method "replase" cannot delite message if message Id is null');
@@ -139,8 +165,8 @@ class Page {
 
   ///
   ///
-  Future edit(Message pageMessage, User user, String text,
-      InlineKeyboardMarkup? markup) async {
+  static Future edit(TeleDart teleDart, Message pageMessage, User user,
+      String text, InlineKeyboardMarkup? markup) async {
     assert(pageMessage.message_id != null);
 
     teleDart.editMessageText(
@@ -150,7 +176,6 @@ class Page {
       reply_markup: markup,
     );
   }
-
   // end regiong
 }
 

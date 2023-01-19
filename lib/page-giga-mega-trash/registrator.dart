@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 import 'package:uuid/uuid.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart';
 
 class Registrator {
   static final stack = Map();
@@ -16,6 +17,8 @@ class Registrator {
     final teleDart = GetIt.I<TeleDart>();
 
     teleDart.onCommand(command).listen((message) {
+      JustGay.loger(command,
+          userId: message.from?.id.toString(), body: 'called');
       action(message, message.from);
     });
   }
@@ -26,8 +29,12 @@ class Registrator {
 
     final teleDart = GetIt.I<TeleDart>();
     teleDart.onCallbackQuery().listen((event) {
+      if (event.data == null) return;
+
       final action = stack[event.data];
       if (action != null) {
+        JustGay.loger(event.data!,
+            userId: event.from.id.toString(), body: 'called');
         action(event.message, event.from);
       }
     });

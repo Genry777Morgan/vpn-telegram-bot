@@ -4,6 +4,7 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart';
 class MyGigaButton {
   final String text;
   late final String callbackData;
+
   MyGigaButton.openPage({required this.text, required Page page}) {
     callbackData = page.getKey();
   }
