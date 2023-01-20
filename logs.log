@@ -416,3 +416,32 @@
 2023-01-20 03:52:35.270567  [Program starting..] 
 2023-01-20 04:13:54.761720  [Program starting..] 
 2023-01-20 04:13:55.255789 /380055934/ [start] called
+2023-01-20 04:48:17.420998  [Program starting..] 
+2023-01-20 04:48:17.802413 /380055934/ [start] called
+2023-01-20 04:48:17.808104  [Error] Connection refused
+#0      IOClient.send (package:http/src/io_client.dart:88:7)
+<asynchronous suspension>
+#1      BaseClient._sendUnstreamed (package:http/src/base_client.dart:93:32)
+<asynchronous suspension>
+#2      _withClient (package:http/http.dart:164:12)
+<asynchronous suspension>
+#3      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:169:20)
+<asynchronous suspension>
+#4      new MyGigaKeybord.function.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:45:29)
+<asynchronous suspension>
+#5      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:152:38)
+<asynchronous suspension>
+#6      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 04:51:53.545200  [Program starting..] 
+2023-01-20 04:52:27.189660  [Program starting..] 
+2023-01-20 04:53:10.554209  [Program starting..] 
+2023-01-20 04:53:35.353099  [Program starting..] 
+2023-01-20 04:54:12.415322  [Program starting..] 
+2023-01-20 05:00:38.441963  [Program starting..] 
+2023-01-20 05:01:43.459629  [Program starting..] 
+2023-01-20 05:08:12.169500  [Program starting..] 
+2023-01-20 05:08:34.273980  [Program starting..] 
+2023-01-20 05:11:09.588727  [Program starting..] 
+2023-01-20 05:24:38.166270  [Program starting..] 

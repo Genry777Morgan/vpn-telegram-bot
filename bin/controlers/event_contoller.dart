@@ -12,7 +12,9 @@ class EventController extends IController {
 
   @override
   EventController addHandlers() {
-    router.post('/testSubscribe', _testSubscribe);
+    router
+      ..post('/testSubscribe', _testSubscribe)
+      ..post('/iokassa', _testSubscribe);
     return this;
   }
 
@@ -20,10 +22,24 @@ class EventController extends IController {
     var body = await req.readAsString();
     var postData = jsonDecode(body);
 
-    final page = Page(text: MyGigaText.string('Molodez'));
+    final page = Page(
+        text: MyGigaText.string(
+            'A ya yasnie dni provoju взламывая твою жопу лошпедюк'));
     final teleDart = GetIt.I<TeleDart>();
 
-    teleDart.sendMessage(postData['telegramId'], 'molodez');
+    teleDart.sendMessage(postData["User"]['id'], 'event');
+
+    return Response.ok('Notified');
+  }
+
+  Future<Response> _iokassa(Request req) async {
+    var body = await req.readAsString();
+    var postData = jsonDecode(body);
+    JustGay.loger('iokassa', body: postData);
+
+    final teleDart = GetIt.I<TeleDart>();
+
+    teleDart.sendMessage('380055934', 'good');
 
     return Response.ok('Notified');
   }
