@@ -4,5 +4,3 @@ services:
     network_mode: host
     container_name: vpn-telegram-bot
     build: .
-    ports:
-      - "8085:8085"
