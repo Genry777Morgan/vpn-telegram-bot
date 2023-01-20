@@ -14,7 +14,7 @@ class EventController extends IController {
   EventController addHandlers() {
     router
       ..post('/testSubscribe', _testSubscribe)
-      ..post('/iokassa', _testSubscribe);
+      ..post('/iokassa', _iokassa);
     return this;
   }
 
