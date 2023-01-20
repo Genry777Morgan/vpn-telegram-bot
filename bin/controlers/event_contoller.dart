@@ -43,7 +43,7 @@ class EventController extends IController {
     final teleDart = GetIt.I<TeleDart>();
 
     teleDart.editMessageText('thanks for money',
-        message_id: messageId as int, chat_id: userId);
+        message_id: int.parse(messageId), chat_id: userId);
 
     var response = await http.patch(Uri.http(host, "/users/$userId/balance/1"));
 
