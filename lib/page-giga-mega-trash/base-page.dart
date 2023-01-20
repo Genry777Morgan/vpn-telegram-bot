@@ -12,24 +12,50 @@ import 'package:vpn_telegram_bot/data/layout.enum.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-button.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
 
-class Text {
-  Text.string(String string) {
-    getContent = (pageMessage, user) {
+class MyGigaText {
+  MyGigaText.string(String string) {
+    getContent = (pageMessage, user) async {
       return string;
     };
   }
 
-  Text.function(String Function(Message pageMessage, User user) function) {
+  MyGigaText.function(
+      Future<String> Function(Message pageMessage, User user) function) {
     getContent = function;
   }
 
-  late final String Function(Message pageMessage, User user) getContent;
+  late final Future<String> Function(Message pageMessage, User user) getContent;
+}
+
+class MyGigaKeybord {
+  MyGigaKeybord.list(List<List<MyGigaButton>> buttons) {
+    getMarkup = ((pageMessage, user) async {
+      return InlineKeyboardMarkup(
+          inline_keyboard: buttons
+              .map((e) => e.map((e) => e.convertToTeegram()).toList())
+              .toList());
+    });
+  }
+
+  MyGigaKeybord.function(
+      Future<List<List<MyGigaButton>>> Function(Message pageMessage, User user)
+          function) {
+    getMarkup = ((pageMessage, user) async {
+      return InlineKeyboardMarkup(
+          inline_keyboard: (await function(pageMessage, user))
+              .map((e) => e.map((e) => e.convertToTeegram()).toList())
+              .toList());
+    });
+  }
+
+  late final Future<InlineKeyboardMarkup> Function(
+      Message pageMessage, User user) getMarkup;
 }
 
 class Page {
   String? name;
-  late Text _text;
-  late List<List<MyGigaButton>>? _keyboard;
+  late MyGigaText _text;
+  late MyGigaKeybord? _keyboard;
 
   final _key = uuid.v1().toString();
   late Future<dynamic> Function(Message, User) render;
@@ -37,10 +63,30 @@ class Page {
   Future<dynamic> Function(
       TeleDart, Message, User, String, InlineKeyboardMarkup?)? _renderMethod;
 
+  Page.withoutRegistration({
+    this.name,
+    required MyGigaText text,
+    MyGigaKeybord? keyboard, // TODO create keyboard class
+    Future<dynamic> Function(
+            TeleDart, Message, User, String, InlineKeyboardMarkup?)?
+        renderMethod,
+  }) {
+    // DI
+
+    teleDart = GetIt.I<TeleDart>();
+
+    // endregion
+    _text = text;
+    _keyboard = keyboard;
+    _renderMethod = renderMethod;
+
+    _constructRender();
+  }
+
   Page({
     this.name,
-    required Text text,
-    List<List<MyGigaButton>>? keyboard, // TODO create keyboard class
+    required MyGigaText text,
+    MyGigaKeybord? keyboard, // TODO create keyboard class
     Future<dynamic> Function(
             TeleDart, Message, User, String, InlineKeyboardMarkup?)?
         renderMethod,
@@ -59,7 +105,7 @@ class Page {
     Registrator.registrate(_key, render);
   }
 
-  void changeKeyboard(List<List<MyGigaButton>>? keyboard) {
+  void changeKeyboard(MyGigaKeybord? keyboard) {
     _keyboard = keyboard;
     _constructRender();
   }
@@ -70,12 +116,7 @@ class Page {
           pageMessage: pageMessage,
           user: user,
           getText: _text.getContent,
-          markup: _keyboard == null
-              ? null
-              : InlineKeyboardMarkup(
-                  inline_keyboard: _keyboard!
-                      .map((e) => e.map((e) => e.convertToTeegram()).toList())
-                      .toList()),
+          getMarkup: _keyboard?.getMarkup,
           renderMethod: _renderMethod);
     };
   }
@@ -90,8 +131,9 @@ class Page {
   Future<void> _render({
     required Message pageMessage,
     required User user,
-    required String Function(Message, User) getText,
-    InlineKeyboardMarkup? markup,
+    required Future<String> Function(Message, User) getText,
+    Future<InlineKeyboardMarkup> Function(Message pageMessage, User user)?
+        getMarkup,
     Future<dynamic> Function(
             TeleDart, Message, User, String, InlineKeyboardMarkup?)?
         renderMethod,
@@ -101,12 +143,13 @@ class Page {
     try {
       assert(pageMessage.chat.id != null);
 
-      String text = getText(pageMessage, user);
+      String text = await getText(pageMessage, user);
       if (text == '' || text == null) {
         text = 'empty';
       }
 
-      return await renderMethod(teleDart, pageMessage, user, text, markup);
+      return await renderMethod(teleDart, pageMessage, user, text,
+          getMarkup == null ? null : await getMarkup(pageMessage, user));
     } catch (exception, stacktrace) {
       JustGay.loger('Error',
           body: '${exception.toString()}\n${stacktrace.toString()}');
@@ -152,7 +195,7 @@ class Page {
   /// удаляет старое сообщкние и отправляет новоре
   /// Для тех случаев когда нужно сместить интерфейс в низ диалога
   static Future replase(TeleDart teleDart, int? chatId, String text,
-      InlineKeyboardMarkup markup, int? messageId) async {
+      InlineKeyboardMarkup? markup, int? messageId) async {
     if (messageId == null) {
       JustGay.loger('Warning',
           body: 'method "replase" cannot delite message if message Id is null');
