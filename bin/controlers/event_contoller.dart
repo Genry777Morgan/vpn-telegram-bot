@@ -34,8 +34,7 @@ class EventController extends IController {
 
   Future<Response> _iokassa(Request req, String userId) async {
     var body = await req.readAsString();
-    var postData = jsonDecode(body);
-    JustGay.loger('iokassa', body: postData);
+    JustGay.loger('iokassa', body: 'userId: $userId');
 
     final teleDart = GetIt.I<TeleDart>();
 
