@@ -30,7 +30,7 @@ Future<void> main() async {
   final handler = Pipeline().addMiddleware(logRequests()).addHandler(router);
 
   // For running in containers, we respect the PORT environment variable.
-  final port = int.parse(Platform.environment['PORT'] ?? '8081');
+  final port = int.parse(Platform.environment['PORT'] ?? '8085');
   final server = await serve(handler, ip, port);
   print('Server listening on port ${server.port}');
 
