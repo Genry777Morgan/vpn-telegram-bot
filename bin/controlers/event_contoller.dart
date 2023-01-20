@@ -35,14 +35,15 @@ class EventController extends IController {
     return Response.ok('Notified');
   }
 
-  Future<Response> _iokassa(Request req, String userId, int messageId) async {
+  Future<Response> _iokassa(
+      Request req, String userId, String messageId) async {
     var body = await req.readAsString();
     JustGay.loger('iokassa', body: 'userId: $userId');
 
     final teleDart = GetIt.I<TeleDart>();
 
     teleDart.editMessageText('thanks for money',
-        message_id: messageId, chat_id: userId);
+        message_id: messageId as int, chat_id: userId);
 
     var response = await http.patch(Uri.http(host, "/users/$userId/balance/1"));
 
