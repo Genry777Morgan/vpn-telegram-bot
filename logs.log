@@ -445,3 +445,261 @@
 2023-01-20 05:08:34.273980  [Program starting..] 
 2023-01-20 05:11:09.588727  [Program starting..] 
 2023-01-20 05:24:38.166270  [Program starting..] 
+2023-01-20 12:47:12.042361  [Program starting..] 
+2023-01-20 12:49:11.618697  [Program starting..] 
+2023-01-20 12:50:05.900902 /380055934/ [start] called
+2023-01-20 12:50:11.219054 /380055934/ [74f1c701-98b8-11ed-b4e6-7b46afc97705] called
+2023-01-20 12:50:13.682706 /380055934/ [74f1c700-98b8-11ed-b4e6-7b46afc97705] called
+2023-01-20 12:50:13.999852  [Error] FormatException: Unexpected character (at character 1)
+Internal Server Error
+^
+
+#0      _ChunkedJsonParser.fail (dart:convert-patch/convert_patch.dart:1383:5)
+#1      _ChunkedJsonParser.parseNumber (dart:convert-patch/convert_patch.dart:1250:9)
+#2      _ChunkedJsonParser.parse (dart:convert-patch/convert_patch.dart:915:22)
+#3      _parseJson (dart:convert-patch/convert_patch.dart:35:10)
+#4      JsonDecoder.convert (dart:convert/json.dart:612:36)
+#5      JsonCodec.decode (dart:convert/json.dart:216:41)
+#6      jsonDecode (dart:convert/json.dart:155:10)
+#7      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:122:24)
+<asynchronous suspension>
+#8      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:21)
+<asynchronous suspension>
+#9      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 12:50:38.469021 /380055934/ [74f1c700-98b8-11ed-b4e6-7b46afc97705] called
+2023-01-20 12:50:54.851432  [Error] FormatException: Unexpected character (at character 1)
+Internal Server Error
+^
+
+#0      _ChunkedJsonParser.fail (dart:convert-patch/convert_patch.dart:1383:5)
+#1      _ChunkedJsonParser.parseNumber (dart:convert-patch/convert_patch.dart:1250:9)
+#2      _ChunkedJsonParser.parse (dart:convert-patch/convert_patch.dart:915:22)
+#3      _parseJson (dart:convert-patch/convert_patch.dart:35:10)
+#4      JsonDecoder.convert (dart:convert/json.dart:612:36)
+#5      JsonCodec.decode (dart:convert/json.dart:216:41)
+#6      jsonDecode (dart:convert/json.dart:155:10)
+#7      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:122:24)
+<asynchronous suspension>
+#8      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:21)
+<asynchronous suspension>
+#9      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 12:53:29.834253  [Program starting..] 
+2023-01-20 12:53:41.044316 /380055934/ [start] called
+2023-01-20 12:53:55.787437 /380055934/ [0eaa0ab4-98b9-11ed-a921-15915c17a5f1] called
+2023-01-20 12:53:58.343288 /380055934/ [0eaa0ab0-98b9-11ed-a921-15915c17a5f1] called
+2023-01-20 12:54:00.597217 /380055934/ [0eaa0ab3-98b9-11ed-a921-15915c17a5f1] called
+2023-01-20 12:54:08.996663 /380055934/ [0eaa0ab2-98b9-11ed-a921-15915c17a5f1] called
+2023-01-20 12:54:12.269894  [Error] FormatException: Unexpected character (at character 1)
+Internal Server Error
+^
+
+#0      _ChunkedJsonParser.fail (dart:convert-patch/convert_patch.dart:1383:5)
+#1      _ChunkedJsonParser.parseNumber (dart:convert-patch/convert_patch.dart:1250:9)
+#2      _ChunkedJsonParser.parse (dart:convert-patch/convert_patch.dart:915:22)
+#3      _parseJson (dart:convert-patch/convert_patch.dart:35:10)
+#4      JsonDecoder.convert (dart:convert/json.dart:612:36)
+#5      JsonCodec.decode (dart:convert/json.dart:216:41)
+#6      jsonDecode (dart:convert/json.dart:155:10)
+#7      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:122:24)
+<asynchronous suspension>
+#8      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:21)
+<asynchronous suspension>
+#9      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 12:54:34.536697 /380055934/ [0eaa0ab2-98b9-11ed-a921-15915c17a5f1] called
+2023-01-20 12:56:06.975228  [Program starting..] 
+2023-01-20 12:56:07.618373 /380055934/ [start] called
+2023-01-20 12:56:11.975409 /380055934/ [6c5c6683-98b9-11ed-aba4-4527b172fae7] called
+2023-01-20 12:56:14.019317 /380055934/ [6c5c6682-98b9-11ed-aba4-4527b172fae7] called
+2023-01-20 12:56:14.023847  [Error] FormatException: Invalid radix-10 number (at character 1)
+//api.yookassa.ru
+^
+
+#0      int._handleFormatError (dart:core-patch/integers_patch.dart:131:5)
+#1      int._parseRadix (dart:core-patch/integers_patch.dart:142:16)
+#2      int._parse (dart:core-patch/integers_patch.dart:103:12)
+#3      int.parse (dart:core-patch/integers_patch.dart:65:12)
+#4      _Uri._makeHttpUri (dart:core/uri.dart:1788:49)
+#5      new _Uri.http (dart:core/uri.dart:1684:12)
+#6      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:110:19)
+#7      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:34)
+#8      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:13)
+#9      Registrator.createLisener.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart:38:15)
+#10     _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#11     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#12     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#13     _ForwardingStreamSubscription._add (dart:async/stream_pipe.dart:123:11)
+#14     _MapStream._handleData (dart:async/stream_pipe.dart:218:10)
+#15     _ForwardingStreamSubscription._handleData (dart:async/stream_pipe.dart:153:13)
+#16     _RootZone.runUnaryGuarded (dart:async/zone.dart:1586:10)
+#17     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#18     _DelayedData.perform (dart:async/stream_impl.dart:515:14)
+#19     _PendingEvents.handleNext (dart:async/stream_impl.dart:620:11)
+#20     _PendingEvents.schedule.<anonymous closure> (dart:async/stream_impl.dart:591:7)
+#21     _microtaskLoop (dart:async/schedule_microtask.dart:40:21)
+#22     _startMicrotaskLoop (dart:async/schedule_microtask.dart:49:5)
+#23     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:122:13)
+#24     _Timer._runTimers (dart:isolate-patch/timer_impl.dart:405:11)
+#25     _Timer._handleMessage (dart:isolate-patch/timer_impl.dart:429:5)
+#26     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:192:12)
+
+2023-01-20 12:57:00.055960  [Program starting..] 
+2023-01-20 12:57:01.846378 /380055934/ [start] called
+2023-01-20 12:57:04.276142 /380055934/ [8bf89813-98b9-11ed-9e94-552d86847eae] called
+2023-01-20 12:57:06.063868 /380055934/ [8bf89812-98b9-11ed-9e94-552d86847eae] called
+2023-01-20 12:59:14.880769  [Error] Connection timed out
+#0      IOClient.send (package:http/src/io_client.dart:88:7)
+<asynchronous suspension>
+#1      BaseClient._sendUnstreamed (package:http/src/base_client.dart:93:32)
+<asynchronous suspension>
+#2      _withClient (package:http/http.dart:164:12)
+<asynchronous suspension>
+#3      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:110:9)
+<asynchronous suspension>
+#4      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:21)
+<asynchronous suspension>
+#5      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 12:59:47.500773  [Program starting..] 
+2023-01-20 12:59:58.090144 /380055934/ [start] called
+2023-01-20 13:00:01.247934 /380055934/ [efc35102-98b9-11ed-895a-fb56ed266cbf] called
+2023-01-20 13:00:02.990974 /380055934/ [efc35101-98b9-11ed-895a-fb56ed266cbf] called
+2023-01-20 13:01:10.046784  [Program starting..] 
+2023-01-20 13:01:11.057733 /380055934/ [start] called
+2023-01-20 13:01:13.570775 /380055934/ [20fb6a03-98ba-11ed-a423-f17a0c6d4aac] called
+2023-01-20 13:01:14.772256 /380055934/ [20fb6a02-98ba-11ed-a423-f17a0c6d4aac] called
+2023-01-20 13:01:31.933399  [Program starting..] 
+2023-01-20 13:01:32.295656 /380055934/ [start] called
+2023-01-20 13:01:34.657992 /380055934/ [2e045bd2-98ba-11ed-bf2d-5f17bc8e627c] called
+2023-01-20 13:01:36.156103 /380055934/ [2e045bd1-98ba-11ed-bf2d-5f17bc8e627c] called
+2023-01-20 13:02:53.401651  [Program starting..] 
+2023-01-20 13:02:54.314792 /380055934/ [start] called
+2023-01-20 13:02:56.745717 /380055934/ [5eae3e90-98ba-11ed-854b-a52be83d664a] called
+2023-01-20 13:02:58.707208 /380055934/ [5eae1782-98ba-11ed-854b-a52be83d664a] called
+2023-01-20 13:03:08.767261  [Error] NoSuchMethodError: The method '[]' was called on null.
+Receiver: null
+Tried calling: []("confirmation_url")
+#0      Object.noSuchMethod (dart:core-patch/object_patch.dart:38:5)
+#1      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:129:57)
+<asynchronous suspension>
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:21)
+<asynchronous suspension>
+#3      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 13:03:23.385165  [Program starting..] 
+2023-01-20 13:03:29.555410 /380055934/ [start] called
+2023-01-20 13:03:32.378897 /380055934/ [7073a701-98ba-11ed-970f-83902a6e2da9] called
+2023-01-20 13:03:33.832391 /380055934/ [7073a700-98ba-11ed-970f-83902a6e2da9] called
+2023-01-20 13:03:44.147622  [Error] NoSuchMethodError: The method '[]' was called on null.
+Receiver: null
+Tried calling: []("confirmation_url")
+#0      Object.noSuchMethod (dart:core-patch/object_patch.dart:38:5)
+#1      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:129:57)
+<asynchronous suspension>
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:21)
+<asynchronous suspension>
+#3      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 13:04:00.765895 /380055934/ [7073a700-98ba-11ed-970f-83902a6e2da9] called
+2023-01-20 13:05:05.030485  [Error] NoSuchMethodError: The method '[]' was called on null.
+Receiver: null
+Tried calling: []("confirmation_url")
+#0      Object.noSuchMethod (dart:core-patch/object_patch.dart:38:5)
+#1      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:129:57)
+<asynchronous suspension>
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:21)
+<asynchronous suspension>
+#3      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 13:07:34.234316  [Program starting..] 
+2023-01-20 13:07:37.044041 /380055934/ [start] called
+2023-01-20 13:07:40.310339 /380055934/ [05fbae81-98bb-11ed-9579-49098374e529] called
+2023-01-20 13:07:42.567108 /380055934/ [05fbae80-98bb-11ed-9579-49098374e529] called
+2023-01-20 13:07:45.807504  [Error] NoSuchMethodError: The method '[]' was called on null.
+Receiver: null
+Tried calling: []("confirmation_url")
+#0      Object.noSuchMethod (dart:core-patch/object_patch.dart:38:5)
+#1      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:130:57)
+<asynchronous suspension>
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:21)
+<asynchronous suspension>
+#3      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 13:07:55.155567 /380055934/ [start] called
+2023-01-20 13:07:57.918664 /380055934/ [05fbae81-98bb-11ed-9579-49098374e529] called
+2023-01-20 13:07:59.454578 /380055934/ [05fbae80-98bb-11ed-9579-49098374e529] called
+2023-01-20 13:12:56.429063  [Program starting..] 
+2023-01-20 13:13:04.109735 /380055934/ [start] called
+2023-01-20 13:13:07.943436 /380055934/ [c6084352-98bb-11ed-bdbc-152f33280c8c] called
+2023-01-20 13:13:09.736802 /380055934/ [c6084351-98bb-11ed-bdbc-152f33280c8c] called
+2023-01-20 13:15:22.597091  [Program starting..] 
+2023-01-20 13:15:30.950570 /380055934/ [start] called
+2023-01-20 13:15:34.221714 /380055934/ [1d248682-98bc-11ed-99f6-2794eab0d811] called
+2023-01-20 13:15:36.507063 /380055934/ [1d248681-98bc-11ed-99f6-2794eab0d811] called
+2023-01-20 13:15:36.845870  [Error] NoSuchMethodError: The method '[]' was called on null.
+Receiver: null
+Tried calling: []("confirmation_url")
+#0      Object.noSuchMethod (dart:core-patch/object_patch.dart:38:5)
+#1      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:131:57)
+<asynchronous suspension>
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:21)
+<asynchronous suspension>
+#3      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 13:16:56.225380  [Program starting..] 
+2023-01-20 13:17:01.485912 /380055934/ [start] called
+2023-01-20 13:17:04.535513 /380055934/ [54f63a93-98bc-11ed-adca-493e7344f919] called
+2023-01-20 13:17:06.271419 /380055934/ [54f63a92-98bc-11ed-adca-493e7344f919] called
+2023-01-20 13:17:06.921634  [Error] NoSuchMethodError: The method '[]' was called on null.
+Receiver: null
+Tried calling: []("confirmation_url")
+#0      Object.noSuchMethod (dart:core-patch/object_patch.dart:38:5)
+#1      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:131:57)
+<asynchronous suspension>
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:21)
+<asynchronous suspension>
+#3      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 13:18:08.711397  [Program starting..] 
+2023-01-20 13:18:11.118487 /380055934/ [start] called
+2023-01-20 13:18:14.780804 /380055934/ [8024ea92-98bc-11ed-bc7a-8b964db75642] called
+2023-01-20 13:18:17.032253 /380055934/ [8024ea91-98bc-11ed-bc7a-8b964db75642] called
+2023-01-20 13:18:35.628158  [Error] NoSuchMethodError: The method '[]' was called on null.
+Receiver: null
+Tried calling: []("confirmation_url")
+#0      Object.noSuchMethod (dart:core-patch/object_patch.dart:38:5)
+#1      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:131:57)
+<asynchronous suspension>
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:21)
+<asynchronous suspension>
+#3      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 13:18:41.402442 /380055934/ [8024ea91-98bc-11ed-bc7a-8b964db75642] called
+2023-01-20 13:19:09.416175  [Error] NoSuchMethodError: The method '[]' was called on null.
+Receiver: null
+Tried calling: []("confirmation_url")
+#0      Object.noSuchMethod (dart:core-patch/object_patch.dart:38:5)
+#1      main.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/vpn_telegram_bot.dart:131:57)
+<asynchronous suspension>
+#2      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:146:21)
+<asynchronous suspension>
+#3      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart:115:7)
+<asynchronous suspension>
+
+2023-01-20 13:19:14.726824  [Program starting..] 
+2023-01-20 13:19:15.106229 /380055934/ [start] called
+2023-01-20 13:19:17.259215 /380055934/ [a77f3a03-98bc-11ed-a2d3-630ab394d949] called
+2023-01-20 13:19:18.498288 /380055934/ [a77f3a02-98bc-11ed-a2d3-630ab394d949] called

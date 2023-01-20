@@ -10,6 +10,7 @@ import 'package:teledart/teledart.dart';
 import 'package:teledart/telegram.dart';
 import 'package:vpn_telegram_bot/callback_data.dart';
 import 'package:vpn_telegram_bot/configurations.dart';
+import 'package:vpn_telegram_bot/constants.dart';
 import 'package:vpn_telegram_bot/data/interfaces/dialog.data_source.interface.dart';
 import 'package:vpn_telegram_bot/data/yaml_dialog.data_source.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart';
@@ -105,7 +106,31 @@ VPNster в телеграм!
         Page.send(teleDart, message, user, text, markup);
       }));
 
-  //endregion
+  var pay1 = Page(text: MyGigaText.function((pageMessage, user) async {
+    var response =
+        await http.post(Uri.https('api.yookassa.ru', "/v3/payments"), headers: {
+      'Idempotence-Key': '${uuid.v1().toString()}',
+      'Content-Type': 'application/json',
+      'Authorization':
+          'Basic ${base64.encode(utf8.encode('606187:test_rfWl9R66FvKB3QyzwGlid8deH9YiPcReTgv3r-KFSsA'))}'
+    }, body: '''{
+        "amount": {
+          "value": "100.00",
+          "currency": "RUB"
+        },
+        "capture": true,
+        "confirmation": {
+          "type": "redirect",
+          "return_url": "http://$bothost/iokassa/${user.id}"
+        },
+        "description": "Оплата бота"
+      }''');
+
+    var responseBody = jsonDecode(response.body);
+
+    return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
+  }));
+
   var rate = Page(
       text: MyGigaText.function((pageMessage, user) async {
         var response = await http.get(Uri.http(host, "/users/${user.id}"));
@@ -197,9 +222,13 @@ VPNster в телеграм!
   ]));
 
   rate.changeKeyboard(MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: 'Оплатить на день', page: mainMenu)],
-    [MyGigaButton.openPage(text: 'Оплатить на месяц', page: mainMenu)],
+    [MyGigaButton.openPage(text: 'Оплатить на день', page: pay1)],
+    [MyGigaButton.openPage(text: 'Оплатить на месяц', page: pay1)],
     [MyGigaButton.openPage(text: 'Назад', page: mainMenu)]
+  ]));
+
+  pay1.changeKeyboard(MyGigaKeybord.list([
+    [MyGigaButton.openPage(text: 'В меню', page: pay1)]
   ]));
 
   dashBoard.changeKeyboard(MyGigaKeybord.list([

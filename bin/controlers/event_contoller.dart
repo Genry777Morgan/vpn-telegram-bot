@@ -14,7 +14,7 @@ class EventController extends IController {
   EventController addHandlers() {
     router
       ..post('/testSubscribe', _testSubscribe)
-      ..post('/iokassa', _iokassa);
+      ..post('/iokassa/<userId>', _iokassa);
     return this;
   }
 
@@ -32,14 +32,14 @@ class EventController extends IController {
     return Response.ok('Notified');
   }
 
-  Future<Response> _iokassa(Request req) async {
+  Future<Response> _iokassa(Request req, String userId) async {
     var body = await req.readAsString();
     var postData = jsonDecode(body);
     JustGay.loger('iokassa', body: postData);
 
     final teleDart = GetIt.I<TeleDart>();
 
-    teleDart.sendMessage('380055934', 'good');
+    teleDart.sendMessage(userId, 'thanks for money');
 
     return Response.ok('Notified');
   }
