@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   telegram-bot:
+    networks_mod: host
     container_name: vpn-telegram-bot
     build: .
     ports:
