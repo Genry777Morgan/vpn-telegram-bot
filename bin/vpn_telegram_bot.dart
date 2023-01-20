@@ -121,7 +121,7 @@ VPNster в телеграм!
         "capture": true,
         "confirmation": {
           "type": "redirect",
-          "return_url": "http://$bothost/iokassa/${user.id}"
+          "return_url": "http://$bothost/iokassa/${user.id}/${pageMessage.message_id}"
         },
         "description": "Оплата бота"
       }''');
@@ -223,7 +223,6 @@ VPNster в телеграм!
 
   rate.changeKeyboard(MyGigaKeybord.list([
     [MyGigaButton.openPage(text: 'Оплатить на день', page: pay1)],
-    [MyGigaButton.openPage(text: 'Оплатить на месяц', page: pay1)],
     [MyGigaButton.openPage(text: 'Назад', page: mainMenu)]
   ]));
 
