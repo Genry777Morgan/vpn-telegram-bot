@@ -4,4 +4,4 @@ services:
     container_name: vpn-telegram-bot
     build: .
     ports:
-      - "8081:8081"
+      - "8085:8085"
