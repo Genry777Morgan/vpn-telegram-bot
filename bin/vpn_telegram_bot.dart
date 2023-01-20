@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:io' as io;
+import 'dart:io';
 
 import 'package:get_it/get_it.dart';
+import 'package:shelf_router/shelf_router.dart';
 import 'package:teledart/model.dart';
 import 'package:http/http.dart' as http;
 import 'package:teledart/teledart.dart';
@@ -13,13 +15,29 @@ import 'package:vpn_telegram_bot/data/yaml_dialog.data_source.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-button.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
+import 'package:shelf/shelf.dart';
+import 'package:shelf/shelf_io.dart';
 
 import 'constants.dart';
+import 'controlers/event_contoller.dart';
 
 Future<void> main() async {
+  final router = Router();
+  EventController(router: router).addHandlers();
+
+  final ip = InternetAddress.anyIPv4;
+  // Configure a pipeline that logs requests.
+  final handler = Pipeline().addMiddleware(logRequests()).addHandler(router);
+
+  // For running in containers, we respect the PORT environment variable.
+  final port = int.parse(Platform.environment['PORT'] ?? '8081');
+  final server = await serve(handler, ip, port);
+  print('Server listening on port ${server.port}');
+
+  JustGay.loger('Program starting..');
   // region setup teledart
 
-  var botToken = Configurations.config['ApiToken'];
+  var botToken = 't1456257916:AAFXlGP9xZgWEwZzkgtTr03a9M4vZPZ-r2I';
   final username = (await Telegram(botToken).getMe()).username;
 
   GetIt.I.registerSingleton<TeleDart>(TeleDart(botToken, Event(username!)));
