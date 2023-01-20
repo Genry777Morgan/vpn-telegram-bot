@@ -30,7 +30,7 @@ class EventController extends IController {
             'A ya yasnie dni provoju взламывая твою жопу лошпедюк'));
     final teleDart = GetIt.I<TeleDart>();
 
-    teleDart.sendMessage(postData["User"]['id'], 'event');
+    teleDart.sendMessage(postData["User"]['id'], 'test notify');
 
     return Response.ok('Notified');
   }
