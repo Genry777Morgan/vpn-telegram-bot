@@ -227,7 +227,7 @@ VPNster в телеграм!
   ]));
 
   pay1.changeKeyboard(MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: 'В меню', page: pay1)]
+    [MyGigaButton.openPage(text: 'В меню', page: mainMenu)]
   ]));
 
   dashBoard.changeKeyboard(MyGigaKeybord.list([
