@@ -37,7 +37,7 @@ Future<void> main() async {
   JustGay.loger('Program starting..');
   // region setup teledart
 
-  var botToken = 't1456257916:AAFXlGP9xZgWEwZzkgtTr03a9M4vZPZ-r2I';
+  var botToken = '1456257916:AAFXlGP9xZgWEwZzkgtTr03a9M4vZPZ-r2I';
   final username = (await Telegram(botToken).getMe()).username;
 
   GetIt.I.registerSingleton<TeleDart>(TeleDart(botToken, Event(username!)));
