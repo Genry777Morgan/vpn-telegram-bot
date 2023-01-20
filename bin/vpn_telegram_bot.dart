@@ -47,7 +47,7 @@ Future<void> main() async {
 
   //region setup DI
 
-  GetIt.I.registerSingleton<DialogDataSourceInterface>(YamlDialogDataSource());
+  // GetIt.I.registerSingleton<DialogDataSourceInterface>(YamlDialogDataSource());
 
   var mainMenuText = MyGigaText.string('''Привет!
 VPNster в телеграм!
