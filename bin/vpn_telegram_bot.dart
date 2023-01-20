@@ -106,14 +106,15 @@ VPNster в телеграм!
         Page.send(teleDart, message, user, text, markup);
       }));
 
-  var pay1 = Page(text: MyGigaText.function((pageMessage, user) async {
-    var response =
-        await http.post(Uri.https('api.yookassa.ru', "/v3/payments"), headers: {
-      'Idempotence-Key': '${uuid.v1().toString()}',
-      'Content-Type': 'application/json',
-      'Authorization':
-          'Basic ${base64.encode(utf8.encode('606187:test_rfWl9R66FvKB3QyzwGlid8deH9YiPcReTgv3r-KFSsA'))}'
-    }, body: '''{
+  var pay1 = Page(
+      text: MyGigaText.function((pageMessage, user) async {
+        var response = await http
+            .post(Uri.https('api.yookassa.ru', "/v3/payments"), headers: {
+          'Idempotence-Key': '${uuid.v1().toString()}',
+          'Content-Type': 'application/json',
+          'Authorization':
+              'Basic ${base64.encode(utf8.encode('606187:test_rfWl9R66FvKB3QyzwGlid8deH9YiPcReTgv3r-KFSsA'))}'
+        }, body: '''{
         "amount": {
           "value": "100.00",
           "currency": "RUB"
@@ -126,10 +127,11 @@ VPNster в телеграм!
         "description": "Оплата бота"
       }''');
 
-    var responseBody = jsonDecode(response.body);
+        var responseBody = jsonDecode(response.body);
 
-    return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
-  }));
+        return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
+      }),
+      renderMethod: Page.edit);
 
   var rate = Page(
       text: MyGigaText.function((pageMessage, user) async {
