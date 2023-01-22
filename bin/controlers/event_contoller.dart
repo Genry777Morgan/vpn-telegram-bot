@@ -5,9 +5,9 @@ import 'package:shelf/shelf.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 import 'package:http/http.dart' as http;
+import 'package:vpn_telegram_bot/configurations.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart';
 
-import '../constants.dart';
 import 'controller_interface.dart';
 
 class EventController extends IController {
@@ -42,7 +42,8 @@ class EventController extends IController {
     teleDart.editMessageText('thanks for money',
         message_id: int.parse(messageId), chat_id: userId);
 
-    var response = await http.patch(Uri.http(host, "/users/$userId/balance/1"));
+    var response = await http.patch(
+        Uri.http(Configurations.backendHost, "/users/$userId/balance/1"));
     JustGay.loger('iokassa event',
         userId: userId, body: 'balance request: $response');
     return Response.ok('Notified');

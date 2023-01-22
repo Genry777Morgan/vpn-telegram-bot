@@ -19,10 +19,11 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 
-import 'constants.dart';
 import 'controlers/event_contoller.dart';
 
 Future<void> main() async {
+  JustGay.loger('Program starting..');
+
   final router = Router();
   EventController(router: router).addHandlers();
 
@@ -33,15 +34,14 @@ Future<void> main() async {
   // For running in containers, we respect the PORT environment variable.
   final port = int.parse(Platform.environment['PORT'] ?? '8085');
   final server = await serve(handler, ip, port);
-  print('Server listening on port ${server.port}');
+  JustGay.loger('Server listening on port ${server.port}');
 
-  JustGay.loger('Program starting..');
   // region setup teledart
 
-  var botToken = '1456257916:AAFXlGP9xZgWEwZzkgtTr03a9M4vZPZ-r2I';
-  final username = (await Telegram(botToken).getMe()).username;
+  final username = (await Telegram(Configurations.botToken).getMe()).username;
 
-  GetIt.I.registerSingleton<TeleDart>(TeleDart(botToken, Event(username!)));
+  GetIt.I.registerSingleton<TeleDart>(
+      TeleDart(Configurations.botToken, Event(username!)));
 
   final teledart = GetIt.I<TeleDart>();
   //endregion
@@ -58,7 +58,8 @@ VPNster в телеграм!
       name: 'main-menu',
       text: mainMenuText,
       renderMethod: (teleDart, pageMessage, user, text, markup) async {
-        var response = await http.post(Uri.http(host, "/users"),
+        var response = await http.post(
+            Uri.http(Configurations.backendHost, "/users"),
             body: jsonEncode(
                 {"telegramId": user.id.toString(), "username": user.username}));
         Page.send(teleDart, pageMessage, user, text, markup);
@@ -71,8 +72,8 @@ VPNster в телеграм!
       name: 'main-menu',
       text: mainMenuText,
       renderMethod: ((teleDart, message, user, text, markup) async {
-        var response =
-            await http.patch(Uri.http(host, "/users/${user.id}/useFreePeriod"));
+        var response = await http.patch(Uri.http(
+            Configurations.backendHost, "/users/${user.id}/useFreePeriod"));
 
         await teledart.editMessageReplyMarkup(
             chat_id: message.chat.id,
@@ -80,7 +81,8 @@ VPNster в телеграм!
             reply_markup: null);
 
         try {
-          response = await http.get(Uri.http(host, "/users/${user.id}/qrCode"));
+          response = await http.get(
+              Uri.http(Configurations.backendHost, "/users/${user.id}/qrCode"));
 
           final photo = io.File('qr.png');
           photo.writeAsBytesSync(response.body.codeUnits);
@@ -93,7 +95,8 @@ VPNster в телеграм!
         }
 
         try {
-          response = await http.get(Uri.http(host, "/users/${user.id}/config"));
+          response = await http.get(
+              Uri.http(Configurations.backendHost, "/users/${user.id}/config"));
 
           var configFileBody = jsonDecode(response.body)['configFile'];
 
@@ -106,28 +109,77 @@ VPNster в телеграм!
         Page.send(teleDart, message, user, text, markup);
       }));
 
-  var pay1 = Page(
-      text: MyGigaText.function((pageMessage, user) async {
-        var response = await http
-            .post(Uri.https('api.yookassa.ru', "/v3/payments"), headers: {
-          'Idempotence-Key': '${uuid.v1().toString()}',
-          'Content-Type': 'application/json',
-          'Authorization':
-              'Basic ${base64.encode(utf8.encode('606187:test_rfWl9R66FvKB3QyzwGlid8deH9YiPcReTgv3r-KFSsA'))}'
-        }, body: '''{
-        "amount": {
-          "value": "100.00",
-          "currency": "RUB"
-        },
-        "capture": true,
-        "confirmation": {
-          "type": "redirect",
-          "return_url": "http://$bothost/iokassa/${user.id}/${pageMessage.message_id}"
-        },
-        "description": "Оплата бота"
-      }''');
+  Future<http.Response> iokassaReques(
+      int userId, int messageId, int price) async {
+    var response =
+        await http.post(Uri.https('api.yookassa.ru', "/v3/payments"), headers: {
+      'Idempotence-Key': uuid.v1().toString(),
+      'Content-Type': 'application/json',
+      'Authorization':
+          'Basic ${base64.encode(utf8.encode('606187:test_rfWl9R66FvKB3QyzwGlid8deH9YiPcReTgv3r-KFSsA'))}'
+    }, body: '''{
+          "amount": {
+            "value": "100.00",
+            "currency": "RUB"
+          },
+          "capture": true,
+          "confirmation": {
+            "type": "redirect",
+            "return_url": "http://${Configurations.botHost}/iokassa/${userId}/${messageId}"
+          },
+          "description": "Оплата бота"
+        }''');
+    return response;
+  }
 
-        var responseBody = jsonDecode(response.body);
+  var priceForDay = 10;
+  var payFor1Day = Page(
+      name: 'Страница оплаты на 1 день',
+      text: MyGigaText.function((pageMessage, user) async {
+        var days = 1;
+
+        var responseBody = jsonDecode((await iokassaReques(
+                user.id, pageMessage.message_id, days * priceForDay))
+            .body);
+
+        return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
+      }),
+      renderMethod: Page.edit);
+
+  var payFor1Week = Page(
+      name: 'Страница оплаты на 1 неделя',
+      text: MyGigaText.function((pageMessage, user) async {
+        var days = 1;
+
+        var responseBody = jsonDecode((await iokassaReques(
+                user.id, pageMessage.message_id, days * priceForDay))
+            .body);
+
+        return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
+      }),
+      renderMethod: Page.edit);
+
+  var payFor1Month = Page(
+      name: 'Страница оплаты на 1 месяц',
+      text: MyGigaText.function((pageMessage, user) async {
+        var days = 1;
+
+        var responseBody = jsonDecode((await iokassaReques(
+                user.id, pageMessage.message_id, days * priceForDay))
+            .body);
+
+        return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
+      }),
+      renderMethod: Page.edit);
+
+  var payFor1Year = Page(
+      name: 'Страница оплаты на 1 год',
+      text: MyGigaText.function((pageMessage, user) async {
+        var days = 1;
+
+        var responseBody = jsonDecode((await iokassaReques(
+                user.id, pageMessage.message_id, days * priceForDay))
+            .body);
 
         return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
       }),
@@ -135,7 +187,8 @@ VPNster в телеграм!
 
   var rate = Page(
       text: MyGigaText.function((pageMessage, user) async {
-        var response = await http.get(Uri.http(host, "/users/${user.id}"));
+        var response = await http
+            .get(Uri.http(Configurations.backendHost, "/users/${user.id}"));
 
         var responseBody = jsonDecode(response.body);
         final balance = responseBody['balance'];
@@ -145,7 +198,8 @@ VPNster в телеграм!
 
   var dashBoard = Page(
     text: MyGigaText.function((pageMessage, user) async {
-      var response = await http.get(Uri.http(host, "/users/${user.id}"));
+      var response = await http
+          .get(Uri.http(Configurations.backendHost, "/users/${user.id}"));
 
       var responseBody = jsonDecode(response.body);
       final username = responseBody['username'];
@@ -181,8 +235,8 @@ VPNster в телеграм!
 
   final mainMenuFirsTry = [
     [MyGigaButton.openPage(text: 'Получить ВПН', page: testPeriodChoiceRegion)],
+    [MyGigaButton.openPage(text: 'Тарифы', page: rate)],
     [
-      MyGigaButton.openPage(text: 'Тарифы', page: rate),
       MyGigaButton.openPage(text: 'Личный кабинет', page: dashBoard),
     ]
   ];
@@ -193,7 +247,8 @@ VPNster в телеграм!
   ];
 
   final mainMenuKeyboard = MyGigaKeybord.function(((pageMessage, user) async {
-    var response = await http.get(Uri.http(host, "/users/${user.id}"));
+    var response = await http
+        .get(Uri.http(Configurations.backendHost, "/users/${user.id}"));
 
     var responseBody = jsonDecode(response.body);
     final freePeriodUsed = responseBody['freePeriodUsed'].toString();
@@ -206,7 +261,7 @@ VPNster в телеграм!
   testPeriodActivate.changeKeyboard(MyGigaKeybord.list(mainMenuUsualEntry));
 
   testPeriodInstruction.changeKeyboard(MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: 'Акстивировать', page: testPeriodActivate)],
+    [MyGigaButton.openPage(text: 'Активировать', page: testPeriodActivate)],
     [MyGigaButton.openPage(text: 'Назад', page: testPeriodChoiceOs)]
   ]));
 
@@ -224,16 +279,36 @@ VPNster в телеграм!
   ]));
 
   rate.changeKeyboard(MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: 'Оплатить на день', page: pay1)],
+    [MyGigaButton.openPage(text: '1 день', page: payFor1Day)],
+    [MyGigaButton.openPage(text: '1 неделя', page: payFor1Week)],
+    [MyGigaButton.openPage(text: '1 месяц', page: payFor1Month)],
+    [MyGigaButton.openPage(text: '1 год', page: payFor1Year)],
     [MyGigaButton.openPage(text: 'Назад', page: mainMenu)]
   ]));
 
-  pay1.changeKeyboard(MyGigaKeybord.list([
+  payFor1Month.changeKeyboard(MyGigaKeybord.list([
+    [MyGigaButton.openPage(text: 'В меню', page: mainMenu)]
+  ]));
+  payFor1Week.changeKeyboard(MyGigaKeybord.list([
+    [MyGigaButton.openPage(text: 'В меню', page: mainMenu)]
+  ]));
+  payFor1Month.changeKeyboard(MyGigaKeybord.list([
+    [MyGigaButton.openPage(text: 'В меню', page: mainMenu)]
+  ]));
+  payFor1Year.changeKeyboard(MyGigaKeybord.list([
     [MyGigaButton.openPage(text: 'В меню', page: mainMenu)]
   ]));
 
   dashBoard.changeKeyboard(MyGigaKeybord.list([
-    // [MyGigaButton.openPage(text: 'Получить конфин', page: null)]
+    [
+      MyGigaButton.openPage(text: 'Связаться с поддержкой', page: mainMenu)
+    ], // TODO
+    [
+      MyGigaButton.openPage(text: 'Сменить сервер VPNstera', page: mainMenu)
+    ], // TODO
+    [
+      MyGigaButton.openPage(text: 'Выслать конфиг повторно', page: mainMenu)
+    ], // TODO
     [MyGigaButton.openPage(text: 'Назад', page: mainMenu)]
   ]));
 

@@ -1,7 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
-import 'package:uuid/uuid.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart';
 
 class CommandItem {
@@ -22,6 +21,7 @@ class Registrator {
     callbackDataStack[key] = action;
   }
 
+  /// isMustRemove удаляет сообщение с комндой отправленное юзером
   static void registrateCommand(String command, Function(Message, User) action,
       [bool isMustRemove = false]) {
     assert(commandStack['/$command'] ==
@@ -38,7 +38,6 @@ class Registrator {
     });
   }
 
-  /// isMustRemove удаляет сообщение с комндой отправленное юзером
   static void listenCommands({bool isRemoveUseless = false}) {
     final teleDart = GetIt.I<TeleDart>();
 
