@@ -237,8 +237,9 @@ VPNster в телеграм!
     [MyGigaButton.openPage(text: 'Назад', page: mainMenu)]
   ]));
 
-  Registrator.regCommand('start', startMenu.render, isMustRemove: true);
-
-  Registrator.createLisener();
+  Registrator.removeAllMessages();
+  Registrator.registrateCommand('start', startMenu.render, true);
+  Registrator.listenCommands(isRemoveUseless: true);
+  Registrator.listenCallbacks();
   teledart.start();
 }

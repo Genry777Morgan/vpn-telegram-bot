@@ -4,41 +4,70 @@ import 'package:teledart/teledart.dart';
 import 'package:uuid/uuid.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart';
 
-class Registrator {
-  static final stack = Map();
-  static void registrate(String key, Function(Message, User) action) {
-    assert(
-        stack[key] == null); // если ключ не уникальный - перевыствывай, додик
+class CommandItem {
+  final Function(Message, User) action;
+  final bool isMustRemove;
 
-    stack[key] = action;
+  CommandItem(this.action, this.isMustRemove);
+}
+
+class Registrator {
+  static final callbackDataStack = Map();
+  static final commandStack = Map();
+
+  static void registrateButton(String key, Function(Message, User) action) {
+    assert(callbackDataStack[key] ==
+        null); // если ключ не уникальный - перевыствывай, додик
+
+    callbackDataStack[key] = action;
+  }
+
+  static void registrateCommand(String command, Function(Message, User) action,
+      [bool isMustRemove = false]) {
+    assert(commandStack['/$command'] ==
+        null); // если ключ не уникальный - перевыствывай, додик
+
+    commandStack['/$command'] = CommandItem(action, isMustRemove);
+  }
+
+  static void removeAllMessages() {
+    final teleDart = GetIt.I<TeleDart>();
+
+    teleDart.onMessage().listen((message) {
+      teleDart.deleteMessage(message.chat.id, message.message_id);
+    });
   }
 
   /// isMustRemove удаляет сообщение с комндой отправленное юзером
-  static void regCommand(String command, Function action,
-      {bool isMustRemove = false}) {
+  static void listenCommands({bool isRemoveUseless = false}) {
     final teleDart = GetIt.I<TeleDart>();
 
-    teleDart.onCommand(command).listen((message) {
-      JustGay.loger(command,
-          userId: message.from?.id.toString(), body: 'called');
+    teleDart.onCommand().listen((message) {
+      final CommandItem? item = commandStack[message.text];
+      if (item != null) {
+        JustGay.loger(message.text as String,
+            userId: message.from?.id.toString(), body: 'called');
 
-      if (isMustRemove) {
+        if (item.isMustRemove) {
+          teleDart.deleteMessage(message.chat.id, message.message_id);
+        }
+
+        item.action(message, message.from as User);
+      } else if (isRemoveUseless) {
         teleDart.deleteMessage(message.chat.id, message.message_id);
       }
-
-      action(message, message.from);
     });
   }
 
   static bool lisenerExist = false;
-  static void createLisener() {
+  static void listenCallbacks() {
     assert(lisenerExist == false); // TODO сров норм ошибки с описанием
 
     final teleDart = GetIt.I<TeleDart>();
     teleDart.onCallbackQuery().listen((event) {
       if (event.data == null) return;
 
-      final action = stack[event.data];
+      final action = callbackDataStack[event.data];
       if (action != null) {
         JustGay.loger(event.data!,
             userId: event.from.id.toString(), body: 'called');

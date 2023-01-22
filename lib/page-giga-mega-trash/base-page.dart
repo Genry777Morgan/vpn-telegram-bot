@@ -102,7 +102,7 @@ class Page {
 
     _constructRender();
 
-    Registrator.registrate(_key, render);
+    Registrator.registrateButton(_key, render);
   }
 
   void changeKeyboard(MyGigaKeybord? keyboard) {
