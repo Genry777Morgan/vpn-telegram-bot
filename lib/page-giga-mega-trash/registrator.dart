@@ -13,19 +13,26 @@ class Registrator {
     stack[key] = action;
   }
 
-  static void regCommand(String command, Function action) {
+  /// isMustRemove удаляет сообщение с комндой отправленное юзером
+  static void regCommand(String command, Function action,
+      {bool isMustRemove = false}) {
     final teleDart = GetIt.I<TeleDart>();
 
     teleDart.onCommand(command).listen((message) {
       JustGay.loger(command,
           userId: message.from?.id.toString(), body: 'called');
+
+      if (isMustRemove) {
+        teleDart.deleteMessage(message.chat.id, message.message_id);
+      }
+
       action(message, message.from);
     });
   }
 
   static bool lisenerExist = false;
   static void createLisener() {
-    assert(lisenerExist == false); // TODO сров норм ошибки с лписанием
+    assert(lisenerExist == false); // TODO сров норм ошибки с описанием
 
     final teleDart = GetIt.I<TeleDart>();
     teleDart.onCallbackQuery().listen((event) {

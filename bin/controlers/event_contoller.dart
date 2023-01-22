@@ -25,9 +25,6 @@ class EventController extends IController {
     var body = await req.readAsString();
     var postData = jsonDecode(body);
 
-    final page = Page(
-        text: MyGigaText.string(
-            'A ya yasnie dni provoju взламывая твою жопу лошпедюк'));
     final teleDart = GetIt.I<TeleDart>();
 
     teleDart.sendMessage(postData["User"]['id'], 'test notify');
@@ -46,7 +43,8 @@ class EventController extends IController {
         message_id: int.parse(messageId), chat_id: userId);
 
     var response = await http.patch(Uri.http(host, "/users/$userId/balance/1"));
-
+    JustGay.loger('iokassa event',
+        userId: userId, body: 'balance request: $response');
     return Response.ok('Notified');
   }
 }
