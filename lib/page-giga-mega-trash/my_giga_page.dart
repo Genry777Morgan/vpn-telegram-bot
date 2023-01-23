@@ -7,7 +7,7 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_keyboard.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_text.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
 
-class Page {
+class MyGigaPage {
   String? name;
   late MyGigaText _text;
   late MyGigaKeybord? _keyboard;
@@ -18,7 +18,7 @@ class Page {
   Future<dynamic> Function(
       TeleDart, Message, User, String, InlineKeyboardMarkup?)? _renderMethod;
 
-  Page.withoutRegistration({
+  MyGigaPage.withoutRegistration({
     this.name,
     required MyGigaText text,
     MyGigaKeybord? keyboard, // TODO create keyboard class
@@ -38,7 +38,7 @@ class Page {
     _constructRender();
   }
 
-  Page({
+  MyGigaPage({
     this.name,
     required MyGigaText text,
     MyGigaKeybord? keyboard, // TODO create keyboard class
@@ -80,7 +80,7 @@ class Page {
     return _key;
   }
 
-  /// renderMethod by default PageInterface.send(chatId, text)
+  /// renderMethod by defaultMyGigaPageInterface.send(chatId, text)
   /// ты можеш комбинироватт несколько меодов отрисовки с помощью стрелочной функции
   /// или оправить свой
   Future<void> _render({

@@ -1,5 +1,5 @@
 import 'package:teledart/model.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-button.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_button.dart';
 
 class MyGigaKeybord {
   MyGigaKeybord.list(List<List<MyGigaButton>> buttons) {
