@@ -13,7 +13,7 @@ import 'configurations.dart';
 import 'package:vpn_telegram_bot/constants.dart';
 import 'package:vpn_telegram_bot/data/interfaces/dialog.data_source.interface.dart';
 import 'package:vpn_telegram_bot/data/yaml_dialog.data_source.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-page.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-button.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
 import 'package:shelf/shelf.dart';
@@ -22,7 +22,7 @@ import 'package:shelf/shelf_io.dart';
 import 'controlers/event_contoller.dart';
 
 Future<void> main() async {
-  JustGay.loger('Program starting..');
+  Loger.log('Program starting..');
 
   final router = Router();
   EventController(router: router).addHandlers();
@@ -34,7 +34,7 @@ Future<void> main() async {
   // For running in containers, we respect the PORT environment variable.
   final port = int.parse(Platform.environment['PORT'] ?? '8085');
   final server = await serve(handler, ip, port);
-  JustGay.loger('Server listening on port ${server.port}');
+  Loger.log('Server listening on port ${server.port}');
 
   // region setup teledart
 
@@ -89,7 +89,7 @@ VPNster в телеграм!
 
           await Page.sendPhoto(teleDart, message.chat.id, photo);
         } catch (exception, stacktrace) {
-          JustGay.loger('TestPeriodactivate',
+          Loger.log('TestPeriodactivate',
               userId: user.id.toString(),
               body: '${exception.toString()}\n${stacktrace.toString()}');
         }

@@ -5,8 +5,9 @@ import 'package:shelf/shelf.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 import 'package:http/http.dart' as http;
+import 'package:vpn_telegram_bot/loger.dart';
 import '../configurations.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-page.dart';
 
 import 'controller_interface.dart';
 
@@ -35,7 +36,7 @@ class EventController extends IController {
   Future<Response> _iokassa(
       Request req, String userId, String messageId) async {
     var body = await req.readAsString();
-    JustGay.loger('iokassa', body: 'userId: $userId');
+    Loger.log('iokassa', body: 'userId: $userId');
 
     final teleDart = GetIt.I<TeleDart>();
 
@@ -44,7 +45,7 @@ class EventController extends IController {
 
     var response = await http.patch(
         Uri.http(Configurations.backendHost, "/users/$userId/balance/1"));
-    JustGay.loger('iokassa event',
+    Loger.log('iokassa event',
         userId: userId, body: 'balance request: $response');
     return Response.ok('Notified');
   }

@@ -9,48 +9,11 @@ import 'package:vpn_telegram_bot/callback_data.dart';
 import 'package:vpn_telegram_bot/constants.dart';
 import 'package:vpn_telegram_bot/data/interfaces/dialog.data_source.interface.dart';
 import 'package:vpn_telegram_bot/data/layout.enum.dart';
+import 'package:vpn_telegram_bot/loger.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-button.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-keyboard.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-text.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
-
-class MyGigaText {
-  MyGigaText.string(String string) {
-    getContent = (pageMessage, user) async {
-      return string;
-    };
-  }
-
-  MyGigaText.function(
-      Future<String> Function(Message pageMessage, User user) function) {
-    getContent = function;
-  }
-
-  late final Future<String> Function(Message pageMessage, User user) getContent;
-}
-
-class MyGigaKeybord {
-  MyGigaKeybord.list(List<List<MyGigaButton>> buttons) {
-    getMarkup = ((pageMessage, user) async {
-      return InlineKeyboardMarkup(
-          inline_keyboard: buttons
-              .map((e) => e.map((e) => e.convertToTeegram()).toList())
-              .toList());
-    });
-  }
-
-  MyGigaKeybord.function(
-      Future<List<List<MyGigaButton>>> Function(Message pageMessage, User user)
-          function) {
-    getMarkup = ((pageMessage, user) async {
-      return InlineKeyboardMarkup(
-          inline_keyboard: (await function(pageMessage, user))
-              .map((e) => e.map((e) => e.convertToTeegram()).toList())
-              .toList());
-    });
-  }
-
-  late final Future<InlineKeyboardMarkup> Function(
-      Message pageMessage, User user) getMarkup;
-}
 
 class Page {
   String? name;
@@ -151,7 +114,7 @@ class Page {
       return await renderMethod(teleDart, pageMessage, user, text,
           getMarkup == null ? null : await getMarkup(pageMessage, user));
     } catch (exception, stacktrace) {
-      JustGay.loger('Error',
+      Loger.log('Error',
           body: '${exception.toString()}\n${stacktrace.toString()}');
     }
   }
@@ -197,7 +160,7 @@ class Page {
   static Future replase(TeleDart teleDart, int? chatId, String text,
       InlineKeyboardMarkup? markup, int? messageId) async {
     if (messageId == null) {
-      JustGay.loger('Warning',
+      Loger.log('Warning',
           body: 'method "replase" cannot delite message if message Id is null');
     } else {
       teleDart.deleteMessage(chatId, messageId);
@@ -220,30 +183,4 @@ class Page {
     );
   }
   // end regiong
-}
-
-class Exeptor {
-  static void tryCatch(Function() funk) async {
-    try {
-      funk();
-    } catch (exception, stacktrace) {
-      JustGay.loger('Ecxeption',
-          body: '${exception.toString()}\n${stacktrace.toString()}');
-    }
-  }
-}
-
-class JustGay {
-  static String path = 'logs.log';
-  static void loger(String head, {String? userId, String? body}) {
-    body ??= '';
-    userId == null ? userId = '' : userId = '/$userId/';
-
-    final text = '${DateTime.now()} $userId [$head] $body\n';
-
-    final file = io.File(path);
-    file.writeAsStringSync(text, mode: io.FileMode.append);
-
-    print(text);
-  }
 }

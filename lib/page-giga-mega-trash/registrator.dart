@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-page.dart';
 
 class CommandItem {
   final Function(Message, User) action;
@@ -44,7 +44,7 @@ class Registrator {
     teleDart.onCommand().listen((message) {
       final CommandItem? item = commandStack[message.text];
       if (item != null) {
-        JustGay.loger(message.text as String,
+        Loger.log(message.text as String,
             userId: message.from?.id.toString(), body: 'called');
 
         if (item.isMustRemove) {
@@ -68,7 +68,7 @@ class Registrator {
 
       final action = callbackDataStack[event.data];
       if (action != null) {
-        JustGay.loger(event.data!,
+        Loger.log(event.data!,
             userId: event.from.id.toString(), body: 'called');
 
         action(event.message, event.from);
