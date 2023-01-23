@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:teledart/teledart.dart';
 import 'package:teledart/telegram.dart';
 import 'package:vpn_telegram_bot/callback_data.dart';
-import 'package:vpn_telegram_bot/configurations.dart';
+import 'configurations.dart';
 import 'package:vpn_telegram_bot/constants.dart';
 import 'package:vpn_telegram_bot/data/interfaces/dialog.data_source.interface.dart';
 import 'package:vpn_telegram_bot/data/yaml_dialog.data_source.dart';
@@ -312,9 +312,18 @@ VPNster в телеграм!
     [MyGigaButton.openPage(text: 'Назад', page: mainMenu)]
   ]));
 
+  var restart = Page(
+      text: MyGigaText.string(
+          'Из за технических работ бот был перезапущен, вас вернёт в главное меню'),
+      renderMethod: Page.edit);
+
+  restart.changeKeyboard(MyGigaKeybord.list([
+    [MyGigaButton.openPage(text: 'Ок', page: mainMenu)]
+  ]));
+
   Registrator.removeAllMessages();
   Registrator.registrateCommand('start', startMenu.render, true);
   Registrator.listenCommands(isRemoveUseless: true);
-  Registrator.listenCallbacks();
+  Registrator.listenCallbacks(restart.render);
   teledart.start();
 }

@@ -5,7 +5,7 @@ import 'package:shelf/shelf.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 import 'package:http/http.dart' as http;
-import 'package:vpn_telegram_bot/configurations.dart';
+import '../configurations.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart';
 
 import 'controller_interface.dart';

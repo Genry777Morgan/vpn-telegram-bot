@@ -59,7 +59,7 @@ class Registrator {
   }
 
   static bool lisenerExist = false;
-  static void listenCallbacks() {
+  static void listenCallbacks([Function(Message, User)? defaultAction = null]) {
     assert(lisenerExist == false); // TODO сров норм ошибки с описанием
 
     final teleDart = GetIt.I<TeleDart>();
@@ -70,7 +70,10 @@ class Registrator {
       if (action != null) {
         JustGay.loger(event.data!,
             userId: event.from.id.toString(), body: 'called');
+
         action(event.message, event.from);
+      } else if (defaultAction != null) {
+        defaultAction(event.message as Message, event.from);
       }
     });
   }
