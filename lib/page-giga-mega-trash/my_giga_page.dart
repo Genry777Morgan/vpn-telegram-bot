@@ -1,18 +1,10 @@
-import 'dart:ffi';
-
 import 'package:get_it/get_it.dart';
 import 'package:teledart/model.dart';
-import 'dart:io' as io;
-import 'package:http/http.dart' as http;
 import 'package:teledart/teledart.dart';
-import 'package:vpn_telegram_bot/callback_data.dart';
 import 'package:vpn_telegram_bot/constants.dart';
-import 'package:vpn_telegram_bot/data/interfaces/dialog.data_source.interface.dart';
-import 'package:vpn_telegram_bot/data/layout.enum.dart';
 import 'package:vpn_telegram_bot/loger.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-button.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-keyboard.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-text.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_keyboard.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_text.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
 
 class Page {
@@ -104,10 +96,8 @@ class Page {
     renderMethod ??= send;
 
     try {
-      assert(pageMessage.chat.id != null);
-
       String text = await getText(pageMessage, user);
-      if (text == '' || text == null) {
+      if (text == '') {
         text = 'empty';
       }
 
@@ -119,7 +109,7 @@ class Page {
     }
   }
 
-  @deprecated
+  @Deprecated(""" now useless in project """)
   String stringf(String text, List<String> values) {
     String result = '';
 
@@ -173,8 +163,6 @@ class Page {
   ///
   static Future edit(TeleDart teleDart, Message pageMessage, User user,
       String text, InlineKeyboardMarkup? markup) async {
-    assert(pageMessage.message_id != null);
-
     teleDart.editMessageText(
       text,
       chat_id: pageMessage.chat.id,

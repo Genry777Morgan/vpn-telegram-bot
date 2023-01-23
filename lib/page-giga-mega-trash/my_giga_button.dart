@@ -1,5 +1,5 @@
 import 'package:teledart/model.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/base-page.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-page.dart';
 
 class MyGigaButton {
   final String text;

@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-page.dart';
+import 'package:vpn_telegram_bot/loger.dart';
 
 class CommandItem {
   final Function(Message, User) action;
@@ -11,8 +11,8 @@ class CommandItem {
 }
 
 class Registrator {
-  static final callbackDataStack = Map();
-  static final commandStack = Map();
+  static final callbackDataStack = {};
+  static final commandStack = {};
 
   static void registrateButton(String key, Function(Message, User) action) {
     assert(callbackDataStack[key] ==
@@ -59,7 +59,7 @@ class Registrator {
   }
 
   static bool lisenerExist = false;
-  static void listenCallbacks([Function(Message, User)? defaultAction = null]) {
+  static void listenCallbacks([Function(Message, User)? defaultAction]) {
     assert(lisenerExist == false); // TODO сров норм ошибки с описанием
 
     final teleDart = GetIt.I<TeleDart>();

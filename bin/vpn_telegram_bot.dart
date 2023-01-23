@@ -3,22 +3,22 @@ import 'dart:io' as io;
 import 'dart:io';
 
 import 'package:get_it/get_it.dart';
-import 'package:shelf_router/shelf_router.dart';
-import 'package:teledart/model.dart';
 import 'package:http/http.dart' as http;
-import 'package:teledart/teledart.dart';
-import 'package:teledart/telegram.dart';
-import 'package:vpn_telegram_bot/callback_data.dart';
-import 'configurations.dart';
-import 'package:vpn_telegram_bot/constants.dart';
-import 'package:vpn_telegram_bot/data/interfaces/dialog.data_source.interface.dart';
-import 'package:vpn_telegram_bot/data/yaml_dialog.data_source.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-page.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my-giga-button.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
+import 'package:shelf_router/shelf_router.dart';
+import 'package:teledart/teledart.dart';
+import 'package:teledart/telegram.dart';
 
+import 'package:vpn_telegram_bot/constants.dart';
+import 'package:vpn_telegram_bot/loger.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_button.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_keyboard.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_page.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_text.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
+
+import 'configurations.dart';
 import 'controlers/event_contoller.dart';
 
 Future<void> main() async {
@@ -62,6 +62,11 @@ VPNster в телеграм!
             Uri.http(Configurations.backendHost, "/users"),
             body: jsonEncode(
                 {"telegramId": user.id.toString(), "username": user.username}));
+
+        Loger.log('main-menu',
+            userId: user.id.toString(),
+            body: '/users status: ${response.statusCode}');
+
         Page.send(teleDart, pageMessage, user, text, markup);
       });
 
@@ -104,7 +109,11 @@ VPNster в телеграм!
           file.writeAsStringSync(configFileBody);
 
           await Page.sendFile(teleDart, message.chat.id, file);
-        } catch (e) {}
+        } catch (exception, stacktrace) {
+          Loger.log('TestPeriodactivate',
+              userId: user.id.toString(),
+              body: '${exception.toString()}\n${stacktrace.toString()}');
+        }
 
         Page.send(teleDart, message, user, text, markup);
       }));
@@ -125,7 +134,7 @@ VPNster в телеграм!
           "capture": true,
           "confirmation": {
             "type": "redirect",
-            "return_url": "http://${Configurations.botHost}/iokassa/${userId}/${messageId}"
+            "return_url": "http://${Configurations.botHost}/iokassa/$userId/$messageId"
           },
           "description": "Оплата бота"
         }''');
