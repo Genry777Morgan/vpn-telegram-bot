@@ -24,6 +24,7 @@ import 'pages/dash-board.page.dart';
 import 'pages/main.page.dart';
 import 'pages/pay.page.dart';
 import 'pages/rate.page.dart';
+import 'pages/system/empty.page.dart';
 import 'pages/system/restart.page.dart';
 import 'pages/test-period/test-period-choice-os.page.dart';
 import 'pages/test-period/test-period-choice-region.page.dart';
@@ -64,6 +65,7 @@ Future<void> main() async {
   testPeriodChoiceOsKeyboard();
   testPeriodChoiceRegionKeyboard();
   testPeriodInstructionKeyboard();
+  emptyKeyboard();
 
   Registrator.removeAllMessages();
   Registrator.registrateCommand('start', startMenu.render, true);

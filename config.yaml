@@ -1,6 +1,6 @@
 ﻿botToken: '1456257916:AAFXlGP9xZgWEwZzkgtTr03a9M4vZPZ-r2I'
 backend:
-  host: '185.41.160.153'
+  host: 'localhost'
   port: '8083'
 bot:
   host: 'localhost'

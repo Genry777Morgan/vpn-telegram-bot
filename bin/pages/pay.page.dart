@@ -12,7 +12,8 @@ import 'main.page.dart';
 
 var priceForDay = 10;
 
-Future<Response> iokassaReques(int userId, int messageId, int price) async {
+Future<Response> iokassaReques(
+    int userId, int messageId, int price, int days) async {
   var response =
       await post(Uri.https('api.yookassa.ru', "/v3/payments"), headers: {
     'Idempotence-Key': uuid.v1().toString(),
@@ -27,7 +28,7 @@ Future<Response> iokassaReques(int userId, int messageId, int price) async {
           "capture": true,
           "confirmation": {
             "type": "redirect",
-            "return_url": "http://${Configurations.botHost}/iokassa/$userId/$messageId"
+            "return_url": "http://${Configurations.botHost}/iokassa/$userId/$messageId/$days"
           },
           "description": "Оплата бота"
         }''');
@@ -40,7 +41,7 @@ final payFor1Day = MyGigaPage(
     var days = 1;
 
     var responseBody = jsonDecode((await iokassaReques(
-            user.id, pageMessage.message_id, days * priceForDay))
+            user.id, pageMessage.message_id, days * priceForDay, days))
         .body);
 
     return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
@@ -51,10 +52,10 @@ final payFor1Day = MyGigaPage(
 final payFor1Week = MyGigaPage(
   name: 'Страница оплаты на 1 неделя',
   text: MyGigaText.function((pageMessage, user) async {
-    var days = 1;
+    var days = 7;
 
     var responseBody = jsonDecode((await iokassaReques(
-            user.id, pageMessage.message_id, days * priceForDay))
+            user.id, pageMessage.message_id, days * priceForDay, days))
         .body);
 
     return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
@@ -65,10 +66,10 @@ final payFor1Week = MyGigaPage(
 final payFor1Month = MyGigaPage(
   name: 'Страница оплаты на 1 месяц',
   text: MyGigaText.function((pageMessage, user) async {
-    var days = 1;
+    var days = 30;
 
     var responseBody = jsonDecode((await iokassaReques(
-            user.id, pageMessage.message_id, days * priceForDay))
+            user.id, pageMessage.message_id, days * priceForDay, days))
         .body);
 
     return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
@@ -79,10 +80,10 @@ final payFor1Month = MyGigaPage(
 late final payFor1Year = MyGigaPage(
   name: 'Страница оплаты на 1 год',
   text: MyGigaText.function((pageMessage, user) async {
-    var days = 1;
+    var days = 361;
 
     var responseBody = jsonDecode((await iokassaReques(
-            user.id, pageMessage.message_id, days * priceForDay))
+            user.id, pageMessage.message_id, days * priceForDay, days))
         .body);
 
     return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';

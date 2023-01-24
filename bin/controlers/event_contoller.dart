@@ -16,7 +16,7 @@ class EventController extends IController {
   EventController addHandlers() {
     router
       ..post('/testSubscribe', _testSubscribe)
-      ..get('/iokassa/<userId>/<messageId>', _iokassa);
+      ..get('/iokassa/<userId>/<messageId>/<days>', _iokassa);
     return this;
   }
 
@@ -32,7 +32,7 @@ class EventController extends IController {
   }
 
   Future<Response> _iokassa(
-      Request req, String userId, String messageId) async {
+      Request req, String userId, String messageId, String days) async {
     var body = await req.readAsString();
     Loger.log('iokassa', body: 'userId: $userId');
 
@@ -41,8 +41,8 @@ class EventController extends IController {
     teleDart.editMessageText('thanks for money',
         message_id: int.parse(messageId), chat_id: userId);
 
-    var response = await http.patch(
-        Uri.http(Configurations.backendHost, "/users/$userId/balance/1"));
+    var response = await http.patch(Uri.http(
+        Configurations.backendHost, "/users/$userId/addToBalance/$days"));
     Loger.log('iokassa event',
         userId: userId, body: 'balance request: $response');
     return Response.ok('Notified');
