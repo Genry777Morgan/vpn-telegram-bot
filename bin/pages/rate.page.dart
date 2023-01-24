@@ -10,7 +10,7 @@ import '../configurations.dart';
 import 'main.page.dart';
 import 'pay.page.dart';
 
-var rate = MyGigaPage(
+late final rate = MyGigaPage(
   text: MyGigaText.function((pageMessage, user) async {
     var response =
         await get(Uri.http(Configurations.backendHost, "/users/${user.id}"));
@@ -20,11 +20,14 @@ var rate = MyGigaPage(
     return 'Ваш баланс $balance денег';
   }),
   renderMethod: MyGigaPage.edit,
-  keyboard: MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: '1 день', page: payFor1Day)],
-    [MyGigaButton.openPage(text: '1 неделя', page: payFor1Week)],
-    [MyGigaButton.openPage(text: '1 месяц', page: payFor1Month)],
-    [MyGigaButton.openPage(text: '1 год', page: payFor1Year)],
-    [MyGigaButton.openPage(text: 'Назад', page: mainMenu)]
-  ]),
 );
+
+void rateKeyboard() {
+  rate.changeKeyboard(MyGigaKeybord.list([
+    [MyGigaButton.openPage(text: '1 день', key: payFor1Day.getKey())],
+    [MyGigaButton.openPage(text: '1 неделя', key: payFor1Week.getKey())],
+    [MyGigaButton.openPage(text: '1 месяц', key: payFor1Month.getKey())],
+    [MyGigaButton.openPage(text: '1 год', key: payFor1Year.getKey())],
+    [MyGigaButton.openPage(text: 'Назад', key: mainMenu.getKey())]
+  ]));
+}

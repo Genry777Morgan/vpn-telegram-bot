@@ -34,7 +34,7 @@ Future<Response> iokassaReques(int userId, int messageId, int price) async {
   return response;
 }
 
-var payFor1Day = MyGigaPage(
+final payFor1Day = MyGigaPage(
   name: 'Страница оплаты на 1 день',
   text: MyGigaText.function((pageMessage, user) async {
     var days = 1;
@@ -46,12 +46,9 @@ var payFor1Day = MyGigaPage(
     return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
   }),
   renderMethod: MyGigaPage.edit,
-  keyboard: MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: 'В меню', page: mainMenu)]
-  ]),
 );
 
-var payFor1Week = MyGigaPage(
+final payFor1Week = MyGigaPage(
   name: 'Страница оплаты на 1 неделя',
   text: MyGigaText.function((pageMessage, user) async {
     var days = 1;
@@ -63,12 +60,9 @@ var payFor1Week = MyGigaPage(
     return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
   }),
   renderMethod: MyGigaPage.edit,
-  keyboard: MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: 'В меню', page: mainMenu)]
-  ]),
 );
 
-var payFor1Month = MyGigaPage(
+final payFor1Month = MyGigaPage(
   name: 'Страница оплаты на 1 месяц',
   text: MyGigaText.function((pageMessage, user) async {
     var days = 1;
@@ -80,12 +74,9 @@ var payFor1Month = MyGigaPage(
     return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
   }),
   renderMethod: MyGigaPage.edit,
-  keyboard: MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: 'В меню', page: mainMenu)]
-  ]),
 );
 
-var payFor1Year = MyGigaPage(
+late final payFor1Year = MyGigaPage(
   name: 'Страница оплаты на 1 год',
   text: MyGigaText.function((pageMessage, user) async {
     var days = 1;
@@ -97,7 +88,19 @@ var payFor1Year = MyGigaPage(
     return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
   }),
   renderMethod: MyGigaPage.edit,
-  keyboard: MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: 'В меню', page: mainMenu)]
-  ]),
 );
+
+void payKeyboard() {
+  payFor1Day.changeKeyboard(MyGigaKeybord.list([
+    [MyGigaButton.openPage(text: 'В меню', key: mainMenu.getKey())]
+  ]));
+  payFor1Week.changeKeyboard(MyGigaKeybord.list([
+    [MyGigaButton.openPage(text: 'В меню', key: mainMenu.getKey())]
+  ]));
+  payFor1Month.changeKeyboard(MyGigaKeybord.list([
+    [MyGigaButton.openPage(text: 'В меню', key: mainMenu.getKey())]
+  ]));
+  payFor1Year.changeKeyboard(MyGigaKeybord.list([
+    [MyGigaButton.openPage(text: 'В меню', key: mainMenu.getKey())]
+  ]));
+}

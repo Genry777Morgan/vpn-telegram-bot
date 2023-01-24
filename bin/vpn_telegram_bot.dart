@@ -20,8 +20,14 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
 
 import 'configurations.dart';
 import 'controlers/event_contoller.dart';
+import 'pages/dash-board.page.dart';
 import 'pages/main.page.dart';
+import 'pages/pay.page.dart';
+import 'pages/rate.page.dart';
 import 'pages/system/restart.page.dart';
+import 'pages/test-period/test-period-choice-os.page.dart';
+import 'pages/test-period/test-period-choice-region.page.dart';
+import 'pages/test-period/test-period-instruction.page.dart';
 
 Future<void> main() async {
   Loger.log('Program starting..');
@@ -49,6 +55,15 @@ Future<void> main() async {
   //endregion
 
   // GetIt.I.registerSingleton<DialogDataSourceInterface>(YamlDialogDataSource());
+
+  payKeyboard();
+  restartKeyboard();
+  rateKeyboard();
+  mainKeyboard();
+  dashBoardKeyboard();
+  testPeriodChoiceOsKeyboard();
+  testPeriodChoiceRegionKeyboard();
+  testPeriodInstructionKeyboard();
 
   Registrator.removeAllMessages();
   Registrator.registrateCommand('start', startMenu.render, true);

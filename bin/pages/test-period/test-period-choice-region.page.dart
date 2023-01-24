@@ -6,10 +6,16 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_text.dart';
 import '../main.page.dart';
 import 'test-period-choice-os.page.dart';
 
-var testPeriodChoiceRegion = MyGigaPage(
-    text: MyGigaText.string('''Какой регион желаете?'''),
-    renderMethod: MyGigaPage.edit,
-    keyboard: MyGigaKeybord.list([
-      [MyGigaButton.openPage(text: 'Россия', page: testPeriodChoiceOs)],
-      [MyGigaButton.openPage(text: 'Назад', page: mainMenu)]
-    ]));
+late final testPeriodChoiceRegion = MyGigaPage(
+  text: MyGigaText.string('''Какой регион желаете?'''),
+  renderMethod: MyGigaPage.edit,
+);
+
+void testPeriodChoiceRegionKeyboard() {
+  testPeriodChoiceRegion.changeKeyboard(
+    MyGigaKeybord.list([
+      [MyGigaButton.openPage(text: 'Россия', key: testPeriodChoiceOs.getKey())],
+      [MyGigaButton.openPage(text: 'Назад', key: mainMenu.getKey())]
+    ]),
+  );
+}

@@ -15,93 +15,97 @@ import 'dash-board.page.dart';
 import 'rate.page.dart';
 import 'test-period/test-period-choice-region.page.dart';
 
-var mainMenuText = MyGigaText.string('''Привет!
+final mainMenuText = MyGigaText.string('''Привет!
 VPNster в телеграм!
 Простой в использовании VPN сервис.''');
 
-var startMenu = MyGigaPage.withoutRegistration(
-    name: 'main-menu',
-    text: mainMenuText,
-    renderMethod: (teleDart, pageMessage, user, text, markup) async {
-      var response = await post(Uri.http(Configurations.backendHost, "/users"),
-          body: jsonEncode(
-              {"telegramId": user.id.toString(), "username": user.username}));
+final startMenu = MyGigaPage.withoutRegistration(
+  name: 'main-menu',
+  text: mainMenuText,
+  renderMethod: (teleDart, pageMessage, user, text, markup) async {
+    var response = await post(Uri.http(Configurations.backendHost, "/users"),
+        body: jsonEncode(
+            {"telegramId": user.id.toString(), "username": user.username}));
 
-      Loger.log('main-menu',
+    Loger.log('main-menu',
+        userId: user.id.toString(),
+        body: '/users status: ${response.statusCode}');
+
+    MyGigaPage.send(teleDart, pageMessage, user, text, markup);
+  },
+);
+
+final mainMenu = MyGigaPage(
+  name: 'main-menu',
+  text: mainMenuText,
+  renderMethod: MyGigaPage.edit,
+);
+
+final testPeriodActivate = MyGigaPage(
+  name: 'main-menu',
+  text: mainMenuText,
+  renderMethod: ((teleDart, message, user, text, markup) async {
+    var response = await patch(Uri.http(
+        Configurations.backendHost, "/users/${user.id}/useFreePeriod"));
+
+    var teledart = GetIt.I<TeleDart>(); // TODO
+    await teledart.editMessageReplyMarkup(
+        chat_id: message.chat.id,
+        message_id: message.message_id,
+        reply_markup: null);
+
+    try {
+      response = await get(
+          Uri.http(Configurations.backendHost, "/users/${user.id}/qrCode"));
+
+      final photo = File('qr.png');
+      photo.writeAsBytesSync(response.body.codeUnits);
+
+      await MyGigaPage.sendPhoto(teleDart, message.chat.id, photo);
+    } catch (exception, stacktrace) {
+      Loger.log('TestPeriodactivate',
           userId: user.id.toString(),
-          body: '/users status: ${response.statusCode}');
+          body: '${exception.toString()}\n${stacktrace.toString()}');
+    }
 
-      MyGigaPage.send(teleDart, pageMessage, user, text, markup);
-    },
-    keyboard: mainMenuKeyboard);
+    try {
+      response = await get(
+          Uri.http(Configurations.backendHost, "/users/${user.id}/config"));
 
-var mainMenu = MyGigaPage(
-    name: 'main-menu',
-    text: mainMenuText,
-    renderMethod: MyGigaPage.edit,
-    keyboard: mainMenuKeyboard);
+      var configFileBody = jsonDecode(response.body)['configFile'];
 
-var testPeriodActivate = MyGigaPage(
-    name: 'main-menu',
-    text: mainMenuText,
-    renderMethod: ((teleDart, message, user, text, markup) async {
-      var response = await patch(Uri.http(
-          Configurations.backendHost, "/users/${user.id}/useFreePeriod"));
+      final file = File('config.conf');
+      file.writeAsStringSync(configFileBody);
 
-      var teledart = GetIt.I<TeleDart>(); // TODO
-      await teledart.editMessageReplyMarkup(
-          chat_id: message.chat.id,
-          message_id: message.message_id,
-          reply_markup: null);
+      await MyGigaPage.sendFile(teleDart, message.chat.id, file);
+    } catch (exception, stacktrace) {
+      Loger.log('TestPeriodactivate',
+          userId: user.id.toString(),
+          body: '${exception.toString()}\n${stacktrace.toString()}');
+    }
 
-      try {
-        response = await get(
-            Uri.http(Configurations.backendHost, "/users/${user.id}/qrCode"));
-
-        final photo = File('qr.png');
-        photo.writeAsBytesSync(response.body.codeUnits);
-
-        await MyGigaPage.sendPhoto(teleDart, message.chat.id, photo);
-      } catch (exception, stacktrace) {
-        Loger.log('TestPeriodactivate',
-            userId: user.id.toString(),
-            body: '${exception.toString()}\n${stacktrace.toString()}');
-      }
-
-      try {
-        response = await get(
-            Uri.http(Configurations.backendHost, "/users/${user.id}/config"));
-
-        var configFileBody = jsonDecode(response.body)['configFile'];
-
-        final file = File('config.conf');
-        file.writeAsStringSync(configFileBody);
-
-        await MyGigaPage.sendFile(teleDart, message.chat.id, file);
-      } catch (exception, stacktrace) {
-        Loger.log('TestPeriodactivate',
-            userId: user.id.toString(),
-            body: '${exception.toString()}\n${stacktrace.toString()}');
-      }
-
-      MyGigaPage.send(teleDart, message, user, text, markup);
-    }),
-    keyboard: MyGigaKeybord.list(mainMenuUsualEntry));
+    MyGigaPage.send(teleDart, message, user, text, markup);
+  }),
+);
 
 final mainMenuFirsTry = [
-  [MyGigaButton.openPage(text: 'Получить ВПН', page: testPeriodChoiceRegion)],
-  [MyGigaButton.openPage(text: 'Тарифы', page: rate)],
   [
-    MyGigaButton.openPage(text: 'Личный кабинет', page: dashBoard),
+    MyGigaButton.openPage(
+        text: 'Получить ВПН', key: testPeriodChoiceRegion.getKey())
+  ],
+  [MyGigaButton.openPage(text: 'Тарифы', key: rate.getKey())],
+  [
+    MyGigaButton.openPage(text: 'Личный кабинет', key: dashBoard.getKey()),
   ]
 ];
 
 final mainMenuUsualEntry = [
-  [MyGigaButton.openPage(text: 'Тарифы', page: rate)],
-  [MyGigaButton.openPage(text: 'Личный кабинет', page: dashBoard)]
+  [MyGigaButton.openPage(text: 'Тарифы', key: rate.getKey())],
+  [MyGigaButton.openPage(text: 'Личный кабинет', key: dashBoard.getKey())]
 ];
 
-final mainMenuKeyboard = MyGigaKeybord.function(((pageMessage, user) async {
+late final mainMenuKeyboard =
+    MyGigaKeybord.function(((pageMessage, user) async {
   var response =
       await get(Uri.http(Configurations.backendHost, "/users/${user.id}"));
 
@@ -110,3 +114,9 @@ final mainMenuKeyboard = MyGigaKeybord.function(((pageMessage, user) async {
 
   return freePeriodUsed == 'true' ? mainMenuUsualEntry : mainMenuFirsTry;
 }));
+
+void mainKeyboard() {
+  startMenu.changeKeyboard(mainMenuKeyboard);
+  mainMenu.changeKeyboard(mainMenuKeyboard);
+  mainMenu.changeKeyboard(MyGigaKeybord.list(mainMenuUsualEntry));
+}

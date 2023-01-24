@@ -9,7 +9,7 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_text.dart';
 import '../configurations.dart';
 import 'main.page.dart';
 
-var dashBoard = MyGigaPage(
+late final dashBoard = MyGigaPage(
   text: MyGigaText.function((pageMessage, user) async {
     var response =
         await get(Uri.http(Configurations.backendHost, "/users/${user.id}"));
@@ -22,16 +22,24 @@ var dashBoard = MyGigaPage(
 Баланс: $balance''';
   }),
   renderMethod: MyGigaPage.edit,
-  keyboard: MyGigaKeybord.list([
-    [
-      MyGigaButton.openPage(text: 'Связаться с поддержкой', page: mainMenu)
-    ], // TODO
-    [
-      MyGigaButton.openPage(text: 'Сменить сервер VPNstera', page: mainMenu)
-    ], // TODO
-    [
-      MyGigaButton.openPage(text: 'Выслать конфиг повторно', page: mainMenu)
-    ], // TODO
-    [MyGigaButton.openPage(text: 'Назад', page: mainMenu)]
-  ]),
 );
+
+void dashBoardKeyboard() {
+  dashBoard.changeKeyboard(
+    MyGigaKeybord.list([
+      [
+        MyGigaButton.openPage(
+            text: 'Связаться с поддержкой', key: mainMenu.getKey())
+      ], // TODO
+      [
+        MyGigaButton.openPage(
+            text: 'Сменить сервер VPNstera', key: mainMenu.getKey())
+      ], // TODO
+      [
+        MyGigaButton.openPage(
+            text: 'Выслать конфиг повторно', key: mainMenu.getKey())
+      ], // TODO
+      [MyGigaButton.openPage(text: 'Назад', key: mainMenu.getKey())]
+    ]),
+  );
+}

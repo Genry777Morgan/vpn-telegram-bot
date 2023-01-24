@@ -5,8 +5,8 @@ class MyGigaButton {
   final String text;
   late final String callbackData;
 
-  MyGigaButton.openPage({required this.text, required MyGigaPage page}) {
-    callbackData = page.getKey();
+  MyGigaButton.openPage({required this.text, required String key}) {
+    callbackData = key;
   }
   MyGigaButton.handle({required this.text}) {
 // TODO
