@@ -3,5 +3,5 @@ backend:
   host: 'localhost'
   port: '8083'
 bot:
-  host: 'localhost'
+  host: '185.41160.153'
   port: '8085'
