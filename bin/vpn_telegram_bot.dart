@@ -12,11 +12,11 @@ import 'package:teledart/telegram.dart';
 
 import 'package:vpn_telegram_bot/constants.dart';
 import 'package:vpn_telegram_bot/loger.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_button.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_keyboard.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_page.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_text.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/button.hectic-tg.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/keyboard.hectic-tg.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/text.hectic-tg.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.hectic-tg.dart';
 
 import 'configurations.dart';
 import 'controlers/event_contoller.dart';

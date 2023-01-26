@@ -4,8 +4,8 @@ import 'package:teledart/teledart.dart';
 import 'package:vpn_telegram_bot/constants.dart';
 import 'package:vpn_telegram_bot/loger.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/keyboard.hectic-tg.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_text.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/text.hectic-tg.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.hectic-tg.dart';
 
 class Page {
   String? name;

@@ -6,10 +6,10 @@ import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 import 'package:http/http.dart' as http;
 import 'package:vpn_telegram_bot/loger.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_button.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_keyboard.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_page.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_text.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/button.hectic-tg.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/keyboard.hectic-tg.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/text.hectic-tg.dart';
 import '../configurations.dart';
 
 import '../pages/main.page.dart';
