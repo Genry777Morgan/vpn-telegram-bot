@@ -5,9 +5,9 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
 import 'package:teledart/teledart.dart';
 import 'package:vpn_telegram_bot/loger.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_button.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_keyboard.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_page.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/button.hectic-tg.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/keyboard.hectic-tg.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_text.dart';
 
 import '../configurations.dart';
@@ -15,7 +15,7 @@ import 'main.page.dart';
 import 'system/empty.page.dart';
 import 'test-period/test-period-instruction.page.dart';
 
-late final dashBoardText = MyGigaText.function((pageMessage, user) async {
+late final dashBoardText = Text.function((pageMessage, user) async {
   var response =
       await get(Uri.http(Configurations.backendHost, "/users/${user.id}"));
 
@@ -27,12 +27,12 @@ late final dashBoardText = MyGigaText.function((pageMessage, user) async {
 Баланс: $balance''';
 });
 
-late final dashBoard = MyGigaPage(
+late final dashBoard = Page(
   text: dashBoardText,
-  renderMethod: MyGigaPage.edit,
+  renderMethod: Page.edit,
 );
 
-final respawnInstruction = MyGigaPage(
+final respawnInstruction = Page(
   name: 'main-menu',
   text: dashBoardText,
   renderMethod: ((teleDart, message, user, text, markup) async {
@@ -40,11 +40,11 @@ final respawnInstruction = MyGigaPage(
     await teledart.deleteMessage(message.chat.id, message.message_id);
     await testPeriodInstructionSend.render(message, user);
 
-    MyGigaPage.send(teleDart, message, user, text, markup);
+    Page.send(teleDart, message, user, text, markup);
   }),
 );
 
-final respawnConfix = MyGigaPage(
+final respawnConfix = Page(
   name: 'main-menu',
   text: dashBoardText,
   renderMethod: ((teleDart, message, user, text, markup) async {
@@ -66,7 +66,7 @@ final respawnConfix = MyGigaPage(
       final photo = File('qr.png');
       photo.writeAsBytesSync(response.body.codeUnits);
 
-      await MyGigaPage.sendPhoto(teleDart, message.chat.id, photo);
+      await Page.sendPhoto(teleDart, message.chat.id, photo);
     } catch (exception, stacktrace) {
       Loger.log('TestPeriodactivate',
           userId: user.id.toString(),
@@ -82,35 +82,34 @@ final respawnConfix = MyGigaPage(
       final file = File('config.conf');
       file.writeAsStringSync(configFileBody);
 
-      await MyGigaPage.sendFile(teleDart, message.chat.id, file);
+      await Page.sendFile(teleDart, message.chat.id, file);
     } catch (exception, stacktrace) {
       Loger.log('TestPeriodactivate',
           userId: user.id.toString(),
           body: '${exception.toString()}\n${stacktrace.toString()}');
     }
 
-    MyGigaPage.send(teleDart, message, user, text, markup);
+    Page.send(teleDart, message, user, text, markup);
   }),
 );
 
 void dashBoardKeyboard() {
-  var a = MyGigaKeybord.list([
+  var a = Keyboard.list([
     [
-      MyGigaButton.openPage(text: 'Связаться с поддержкой', key: empty.getKey())
+      Button.openPage(text: 'Связаться с поддержкой', key: empty.getKey())
     ], // TODO
     [
-      MyGigaButton.openPage(
-          text: 'Сменить сервер VPNstera', key: empty.getKey())
+      Button.openPage(text: 'Сменить сервер VPNstera', key: empty.getKey())
     ], // TODO
     [
-      MyGigaButton.openPage(
+      Button.openPage(
           text: 'Выслать инструкцию повторно', key: respawnInstruction.getKey())
     ], // TODO
     [
-      MyGigaButton.openPage(
+      Button.openPage(
           text: 'Выслать конфиг повторно', key: respawnConfix.getKey())
     ],
-    [MyGigaButton.openPage(text: 'Назад', key: mainMenu.getKey())]
+    [Button.openPage(text: 'Назад', key: mainMenu.getKey())]
   ]);
 
   dashBoard.changeKeyboard(a);

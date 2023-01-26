@@ -3,14 +3,14 @@ import 'package:teledart/model.dart';
 import 'package:teledart/teledart.dart';
 import 'package:vpn_telegram_bot/constants.dart';
 import 'package:vpn_telegram_bot/loger.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_keyboard.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/keyboard.hectic-tg.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_text.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.dart';
 
-class MyGigaPage {
+class Page {
   String? name;
-  late MyGigaText _text;
-  late MyGigaKeybord? _keyboard;
+  late Text _text;
+  late Keyboard? _keyboard;
 
   final _key = uuid.v1().toString();
   late Future<dynamic> Function(Message, User) render;
@@ -18,10 +18,10 @@ class MyGigaPage {
   Future<dynamic> Function(
       TeleDart, Message, User, String, InlineKeyboardMarkup?)? _renderMethod;
 
-  MyGigaPage.withoutRegistration({
+  Page.withoutRegistration({
     this.name,
-    required MyGigaText text,
-    MyGigaKeybord? keyboard, // TODO create keyboard class
+    required Text text,
+    Keyboard? keyboard, // TODO create keyboard class
     Future<dynamic> Function(
             TeleDart, Message, User, String, InlineKeyboardMarkup?)?
         renderMethod,
@@ -38,10 +38,10 @@ class MyGigaPage {
     _constructRender();
   }
 
-  MyGigaPage({
+  Page({
     this.name,
-    required MyGigaText text,
-    MyGigaKeybord? keyboard, // TODO create keyboard class
+    required Text text,
+    Keyboard? keyboard, // TODO create keyboard class
     Future<dynamic> Function(
             TeleDart, Message, User, String, InlineKeyboardMarkup?)?
         renderMethod,
@@ -60,7 +60,7 @@ class MyGigaPage {
     Registrator.registrateButton(_key, render);
   }
 
-  void changeKeyboard(MyGigaKeybord? keyboard) {
+  void changeKeyboard(Keyboard? keyboard) {
     _keyboard = keyboard;
     _constructRender();
   }

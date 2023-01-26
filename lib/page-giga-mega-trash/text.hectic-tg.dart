@@ -1,13 +1,13 @@
 import 'package:teledart/model.dart';
 
-class MyGigaText {
-  MyGigaText.string(String string) {
+class Text {
+  Text.string(String string) {
     getContent = (pageMessage, user) async {
       return string;
     };
   }
 
-  MyGigaText.function(
+  Text.function(
       Future<String> Function(Message pageMessage, User user) function) {
     getContent = function;
   }

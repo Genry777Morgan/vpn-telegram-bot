@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:vpn_telegram_bot/constants.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_button.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_keyboard.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_page.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/button.hectic-tg.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/keyboard.hectic-tg.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_text.dart';
 
 import '../configurations.dart';
@@ -35,9 +35,9 @@ Future<Response> iokassaReques(
   return response;
 }
 
-final payFor1Day = MyGigaPage(
+final payFor1Day = Page(
   name: 'Страница оплаты на 1 день',
-  text: MyGigaText.function((pageMessage, user) async {
+  text: Text.function((pageMessage, user) async {
     var days = 1;
 
     var responseBody = jsonDecode((await iokassaReques(
@@ -46,12 +46,12 @@ final payFor1Day = MyGigaPage(
 
     return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
   }),
-  renderMethod: MyGigaPage.edit,
+  renderMethod: Page.edit,
 );
 
-final payFor1Week = MyGigaPage(
+final payFor1Week = Page(
   name: 'Страница оплаты на 1 неделя',
-  text: MyGigaText.function((pageMessage, user) async {
+  text: Text.function((pageMessage, user) async {
     var days = 7;
 
     var responseBody = jsonDecode((await iokassaReques(
@@ -60,12 +60,12 @@ final payFor1Week = MyGigaPage(
 
     return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
   }),
-  renderMethod: MyGigaPage.edit,
+  renderMethod: Page.edit,
 );
 
-final payFor1Month = MyGigaPage(
+final payFor1Month = Page(
   name: 'Страница оплаты на 1 месяц',
-  text: MyGigaText.function((pageMessage, user) async {
+  text: Text.function((pageMessage, user) async {
     var days = 30;
 
     var responseBody = jsonDecode((await iokassaReques(
@@ -74,12 +74,12 @@ final payFor1Month = MyGigaPage(
 
     return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
   }),
-  renderMethod: MyGigaPage.edit,
+  renderMethod: Page.edit,
 );
 
-late final payFor1Year = MyGigaPage(
+late final payFor1Year = Page(
   name: 'Страница оплаты на 1 год',
-  text: MyGigaText.function((pageMessage, user) async {
+  text: Text.function((pageMessage, user) async {
     var days = 361;
 
     var responseBody = jsonDecode((await iokassaReques(
@@ -88,20 +88,20 @@ late final payFor1Year = MyGigaPage(
 
     return 'Оплатите по сылке ${responseBody['confirmation']['confirmation_url']}';
   }),
-  renderMethod: MyGigaPage.edit,
+  renderMethod: Page.edit,
 );
 
 void payKeyboard() {
-  payFor1Day.changeKeyboard(MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: 'В меню', key: mainMenu.getKey())]
+  payFor1Day.changeKeyboard(Keyboard.list([
+    [Button.openPage(text: 'В меню', key: mainMenu.getKey())]
   ]));
-  payFor1Week.changeKeyboard(MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: 'В меню', key: mainMenu.getKey())]
+  payFor1Week.changeKeyboard(Keyboard.list([
+    [Button.openPage(text: 'В меню', key: mainMenu.getKey())]
   ]));
-  payFor1Month.changeKeyboard(MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: 'В меню', key: mainMenu.getKey())]
+  payFor1Month.changeKeyboard(Keyboard.list([
+    [Button.openPage(text: 'В меню', key: mainMenu.getKey())]
   ]));
-  payFor1Year.changeKeyboard(MyGigaKeybord.list([
-    [MyGigaButton.openPage(text: 'В меню', key: mainMenu.getKey())]
+  payFor1Year.changeKeyboard(Keyboard.list([
+    [Button.openPage(text: 'В меню', key: mainMenu.getKey())]
   ]));
 }

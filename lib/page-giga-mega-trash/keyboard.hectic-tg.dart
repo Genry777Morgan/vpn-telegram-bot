@@ -1,8 +1,8 @@
 import 'package:teledart/model.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_button.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/button.hectic-tg.dart';
 
-class MyGigaKeybord {
-  MyGigaKeybord.list(List<List<MyGigaButton>> buttons) {
+class Keyboard {
+  Keyboard.list(List<List<Button>> buttons) {
     getMarkup = ((pageMessage, user) async {
       return InlineKeyboardMarkup(
           inline_keyboard: buttons
@@ -11,8 +11,8 @@ class MyGigaKeybord {
     });
   }
 
-  MyGigaKeybord.function(
-      Future<List<List<MyGigaButton>>> Function(Message pageMessage, User user)
+  Keyboard.function(
+      Future<List<List<Button>>> Function(Message pageMessage, User user)
           function) {
     getMarkup = ((pageMessage, user) async {
       return InlineKeyboardMarkup(

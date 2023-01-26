@@ -1,14 +1,14 @@
 import 'package:teledart/model.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/my_giga_page.dart';
+import 'package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart';
 
-class MyGigaButton {
+class Button {
   final String text;
   late final String callbackData;
 
-  MyGigaButton.openPage({required this.text, required String key}) {
+  Button.openPage({required this.text, required String key}) {
     callbackData = key;
   }
-  MyGigaButton.handle({required this.text}) {
+  Button.handle({required this.text}) {
 // TODO
     callbackData = '';
   }
