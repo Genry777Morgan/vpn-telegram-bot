@@ -1,9 +1,6 @@
 import 'dart:convert';
-import 'dart:io';
 
-import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
-import 'package:teledart/teledart.dart';
 import 'package:vpn_telegram_bot/data/layout.enum.dart';
 import 'package:vpn_telegram_bot/loger.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/button.hectic-tg.dart';
@@ -15,14 +12,10 @@ import '../configurations.dart';
 import '../variables.dart';
 import 'dash-board.page.dart';
 import 'rate.page.dart';
-import 'region/choice-region.page.dart';
-import 'region/instruction.message.dart';
 import 'test-period/test-period.action.dart';
-import 'test-period/test-period.message.dart';
 
-final path = 'main';
 final mainMenuText =
-    Text.string(dialogDataSource.getMessage(path, LayoutEnum.ru));
+    Text.string(dialogDataSource.getMessage('main', LayoutEnum.ru));
 
 final startMenu = Page.withoutRegistration(
   name: 'main-menu',
@@ -55,17 +48,18 @@ final mainMenuSend =
 final mainMenuFirsTry = [
   [
     Button.openPage(
-        text: dialogDataSource.getButtonText(path, 'get-vpn', LayoutEnum.ru),
+        text: dialogDataSource.getButtonText('main', 'get-vpn', LayoutEnum.ru),
         key: testPeriodAction.getKey())
   ],
   [
     Button.openPage(
-        text: dialogDataSource.getButtonText(path, 'rates', LayoutEnum.ru),
+        text: dialogDataSource.getButtonText('main', 'rates', LayoutEnum.ru),
         key: rate.getKey())
   ],
   [
     Button.openPage(
-        text: dialogDataSource.getButtonText(path, 'dash-board', LayoutEnum.ru),
+        text:
+            dialogDataSource.getButtonText('main', 'dash-board', LayoutEnum.ru),
         key: dashBoard.getKey()),
   ]
 ];
@@ -73,12 +67,13 @@ final mainMenuFirsTry = [
 final mainMenuUsualEntry = [
   [
     Button.openPage(
-        text: dialogDataSource.getButtonText(path, 'rates', LayoutEnum.ru),
+        text: dialogDataSource.getButtonText('main', 'rates', LayoutEnum.ru),
         key: rate.getKey())
   ],
   [
     Button.openPage(
-        text: dialogDataSource.getButtonText(path, 'dash-board', LayoutEnum.ru),
+        text:
+            dialogDataSource.getButtonText('main', 'dash-board', LayoutEnum.ru),
         key: dashBoard.getKey())
   ]
 ];

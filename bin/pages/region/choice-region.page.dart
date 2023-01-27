@@ -9,14 +9,13 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/text.hectic-tg.dart';
 import '../../configurations.dart';
 import '../main.page.dart';
 import 'change-region.action.dart';
-import 'instruction.message.dart';
 
-late final regionChoiceEdit = Page(
+final regionChoiceEdit = Page(
   text: Text.string('''Какой регион желаете?'''),
   renderMethod: Page.edit,
 );
 
-late final regionChoiceReplace = Page(
+final regionChoiceReplace = Page(
   text: Text.string('''Какой регион желаете?'''),
   renderMethod: (teleDart, message, user, text, markup) async {
     Page.replase(teleDart, message.chat.id, text, markup, message.message_id);

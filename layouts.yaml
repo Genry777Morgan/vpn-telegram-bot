@@ -2,7 +2,7 @@
   main:
     message: "Привет!
 
-VPNster в телеграм!
+*VPNster в телеграм!*
 
 Простой в использовании VPN сервис."
     buttons:
@@ -10,28 +10,43 @@ VPNster в телеграм!
       rates: 'Тарифы'
       dash-board: 'Личный кабинет'
   dash-board:
-   message: ''
-   buttons:
+    message: '%, это Ваш личный кабинет.
+
+Осталось дней до окончания:  %'
+    buttons:
+      help: 'Связаться с поддержкой'
+      region: 'Сменить сервер VPNstera'
   pay:
-   message: ''
-   buttons:
+    message: ''
+    buttons:
   rate:
-   message: ''
-   buttons:
-  test-period:
-    test-period-choice-os:
-      message: ''
+    message: '*Тарифный план:*'
+    buttons:
+      day: '1 день - 100 руб'
+      week: '1 неделя - 300 руб'
+      month: '1 месяц - 700 руб'
+      year: '1 год - 4000 руб'
+  region:
+    choice-region:
+      message: 'Какой сервер Вы желаете выбрать?'
       buttons:
-    test-period-choice-region:
-      message: ''
+        back: 'Назад'
+    instruction:
+      message: 'https://www.youtube.com/watch?v=Ur52NMF1Obo
+Инструкция по подключению к VPNster
+
+Представьте, что здесь висит ролик на ютуб с видеоинструкцией, а пока текстовое описание такое:
+
+Шаг 1. Скачайте WireGuard;
+Шаг 2. Отсканируйте QR код VPNster.'
       buttons:
-    test-period-instruction:
-      message: ''
-      buttons:
+        download: 'Скачать WireGuard'
   system:
     empty:
-      message: ''
+      message: 'Эта страница находиться в разработке'
       buttons:
+        ok: 'Ок'
     restart:
-      message: ''
+      message: 'Из за технических работ бот был перезапущен, вас вернёт в главное меню'
       buttons:
+        ok: 'Ок'

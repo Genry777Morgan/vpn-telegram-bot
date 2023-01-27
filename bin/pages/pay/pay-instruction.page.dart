@@ -7,8 +7,8 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/keyboard.hectic-tg.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/text.hectic-tg.dart';
 
-import '../configurations.dart';
-import '../pages/main.page.dart';
+import '../../configurations.dart';
+import '../main.page.dart';
 
 var priceForDay = 10;
 

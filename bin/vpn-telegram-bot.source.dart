@@ -16,7 +16,7 @@ import 'configurations.dart';
 import 'controlers/event_contoller.dart';
 import 'pages/dash-board.page.dart';
 import 'pages/main.page.dart';
-import 'pay/pay-instruction.page.dart';
+import 'pages/pay/pay-instruction.page.dart';
 import 'pages/rate.page.dart';
 import 'pages/system/empty.page.dart';
 import 'pages/system/restart.page.dart';

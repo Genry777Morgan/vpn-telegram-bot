@@ -2467,3 +2467,183 @@ Route not found
 2023-01-27 04:27:39.219636 /380055934/ [8bb7abf1-9df2-11ed-9c96-377a5798409c] called
 2023-01-27 04:27:43.395092 /380055934/ [8bb75dd0-9df2-11ed-9c96-377a5798409c] called
 2023-01-27 04:27:44.419888 /380055934/ [8f872a80-9df2-11ed-9c96-377a5798409c] called
+2023-01-27 04:28:25.170827 /380055934/ [8bb75dd0-9df2-11ed-9c96-377a5798409c] called
+2023-01-27 04:28:26.608677 /380055934/ [8bb7fa12-9df2-11ed-9c96-377a5798409c] called
+2023-01-27 04:28:28.142389 /380055934/ [8bb75dd0-9df2-11ed-9c96-377a5798409c] called
+2023-01-27 04:28:28.866262 /380055934/ [8bb7fa12-9df2-11ed-9c96-377a5798409c] called
+2023-01-27 05:04:58.750167  [Program starting..] 
+2023-01-27 05:04:58.823247  [Server listening on port 8085] 
+2023-01-27 05:06:38.919455  [Program starting..] 
+2023-01-27 05:06:39.009180  [Server listening on port 8085] 
+2023-01-27 05:06:48.059984 /380055934/ [/start] called
+2023-01-27 05:06:48.669438 /380055934/ [main-menu] /users status: 200
+2023-01-27 05:06:50.261823 /380055934/ [fff28440-9df7-11ed-a364-9b74f132aed4] called
+2023-01-27 05:06:52.746555 /380055934/ [fff23620-9df7-11ed-a364-9b74f132aed4] called
+2023-01-27 05:06:54.033122 /380055934/ [fff2d262-9df7-11ed-a364-9b74f132aed4] called
+2023-01-27 05:06:55.879154 /380055934/ [fff23620-9df7-11ed-a364-9b74f132aed4] called
+2023-01-27 05:06:56.943646 /380055934/ [0538eb60-9df8-11ed-a364-9b74f132aed4] called
+2023-01-27 05:07:01.242820 /380055934/ [0a987fd0-9df8-11ed-a364-9b74f132aed4] called
+2023-01-27 05:13:07.825300  [Program starting..] 
+2023-01-27 05:13:07.901394  [Server listening on port 8085] 
+2023-01-27 05:13:12.868957 /380055934/ [/start] called
+2023-01-27 05:13:13.877928 /380055934/ [main-menu] /users status: 200
+2023-01-27 05:13:17.193501 /380055934/ [e7a11fe0-9df8-11ed-88af-b155821d0f1e] called
+2023-01-27 05:13:18.895316 /380055934/ [e7a0f8d0-9df8-11ed-88af-b155821d0f1e] called
+2023-01-27 05:13:20.736840 /380055934/ [ee0aaa40-9df8-11ed-88af-b155821d0f1e] called
+2023-01-27 05:13:21.217404  [Error] HttpClientException: 400 Bad Request: can't parse inline keyboard button: Text buttons are unallowed in the inline keyboard
+
+2023-01-27 05:13:30.890616 /380055934/ [e7a11fe0-9df8-11ed-88af-b155821d0f1e] called
+2023-01-27 05:13:32.082861 /380055934/ [e7a0f8d0-9df8-11ed-88af-b155821d0f1e] called
+2023-01-27 05:13:33.300387 /380055934/ [ee0aaa40-9df8-11ed-88af-b155821d0f1e] called
+2023-01-27 05:13:33.548461  [Error] HttpClientException: 400 Bad Request: can't parse inline keyboard button: Text buttons are unallowed in the inline keyboard
+
+2023-01-27 05:14:27.510679 /380055934/ [/start] called
+2023-01-27 05:14:27.794078 /380055934/ [main-menu] /users status: 200
+2023-01-27 05:14:28.629459 /380055934/ [16f0c9d0-9df9-11ed-88af-b155821d0f1e] called
+2023-01-27 05:14:29.994094 /380055934/ [ee0aaa40-9df8-11ed-88af-b155821d0f1e] called
+2023-01-27 05:14:30.214352  [Error] HttpClientException: 400 Bad Request: can't parse inline keyboard button: Text buttons are unallowed in the inline keyboard
+
+2023-01-27 05:15:13.789837 /380055934/ [/start] called
+2023-01-27 05:15:14.430417 /380055934/ [main-menu] /users status: 200
+2023-01-27 05:15:16.199768 /380055934/ [e7a083a0-9df8-11ed-88af-b155821d0f1e] called
+2023-01-27 05:15:17.212332 /380055934/ [e7a03580-9df8-11ed-88af-b155821d0f1e] called
+2023-01-27 05:15:18.445868 /380055934/ [e7a11fe0-9df8-11ed-88af-b155821d0f1e] called
+2023-01-27 05:15:19.827615 /380055934/ [e7a0f8d0-9df8-11ed-88af-b155821d0f1e] called
+2023-01-27 05:15:21.168811 /380055934/ [ee0aaa40-9df8-11ed-88af-b155821d0f1e] called
+2023-01-27 05:15:33.136618  [Error] HttpClientException: 400 Bad Request: can't parse inline keyboard button: Text buttons are unallowed in the inline keyboard
+
+2023-01-27 05:16:20.535678  [Program starting..] 
+2023-01-27 05:16:20.604256  [Server listening on port 8085] 
+2023-01-27 05:16:22.852617 /380055934/ [5a8f1f20-9df9-11ed-819d-cd1f76e44a74] called
+2023-01-27 05:16:23.823658 /380055934/ [5a900983-9df9-11ed-819d-cd1f76e44a74] called
+2023-01-27 05:16:26.590133 /380055934/ [5a900982-9df9-11ed-819d-cd1f76e44a74] called
+2023-01-27 05:16:27.948028 /380055934/ [5df07291-9df9-11ed-819d-cd1f76e44a74] called
+2023-01-27 05:16:28.232971  [Error] HttpClientException: 400 Bad Request: can't parse inline keyboard button: Text buttons are unallowed in the inline keyboard
+
+2023-01-27 05:17:18.817447  [Program starting..] 
+2023-01-27 05:17:18.896580  [Server listening on port 8085] 
+2023-01-27 05:17:19.821893 /380055934/ [7d3b9df0-9df9-11ed-88db-53a6db4f988d] called
+2023-01-27 05:17:21.126034 /380055934/ [7d3c3a32-9df9-11ed-88db-53a6db4f988d] called
+2023-01-27 05:17:22.184250 /380055934/ [7d3c3a31-9df9-11ed-88db-53a6db4f988d] called
+2023-01-27 05:17:23.246414 /380055934/ [7f0decf0-9df9-11ed-88db-53a6db4f988d] called
+2023-01-27 05:18:07.360614 /380055934/ [/start] called
+2023-01-27 05:18:07.864120 /380055934/ [main-menu] /users status: 200
+2023-01-27 05:18:09.690712 /380055934/ [7d3bec10-9df9-11ed-88db-53a6db4f988d] called
+2023-01-27 05:18:10.891101 /380055934/ [7d3a1750-9df9-11ed-88db-53a6db4f988d] called
+2023-01-27 05:18:13.173057 /380055934/ [7d3b9df0-9df9-11ed-88db-53a6db4f988d] called
+2023-01-27 05:24:09.513373  [Program starting..] 
+2023-01-27 05:24:09.582281  [Server listening on port 8085] 
+2023-01-27 05:24:10.097309 /380055934/ [/start] called
+2023-01-27 05:24:10.520709 /380055934/ [main-menu] /users status: 200
+2023-01-27 05:24:11.771408 /380055934/ [720330f1-9dfa-11ed-b7b8-8d428d5fec83] called
+2023-01-27 05:24:12.937006 /380055934/ [720309e0-9dfa-11ed-b7b8-8d428d5fec83] called
+2023-01-27 05:24:13.694602 /380055934/ [7203cd30-9dfa-11ed-b7b8-8d428d5fec83] called
+2023-01-27 05:24:13.709470  [Error] type 'int' is not a subtype of type 'String'
+#0      dashBoardText.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/pages/dash-board.page.dart:30:18)
+<asynchronous suspension>
+#1      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:99:21)
+<asynchronous suspension>
+#2      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:70:7)
+<asynchronous suspension>
+
+2023-01-27 05:24:54.751570  [Program starting..] 
+2023-01-27 05:24:54.817281  [Server listening on port 8085] 
+2023-01-27 05:24:55.277511 /380055934/ [/start] called
+2023-01-27 05:24:55.556958 /380055934/ [main-menu] /users status: 200
+2023-01-27 05:24:57.144490 /380055934/ [8d012240-9dfa-11ed-b540-edb3b50dbad1] called
+2023-01-27 05:24:57.157463  [Error] type 'int' is not a subtype of type 'String'
+#0      dashBoardText.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/pages/dash-board.page.dart:28:18)
+<asynchronous suspension>
+#1      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:99:21)
+<asynchronous suspension>
+#2      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:70:7)
+<asynchronous suspension>
+
+2023-01-27 05:24:58.473541 /380055934/ [8d00ad10-9dfa-11ed-b540-edb3b50dbad1] called
+2023-01-27 05:24:59.221600 /380055934/ [8d005ef0-9dfa-11ed-b540-edb3b50dbad1] called
+2023-01-27 05:25:00.566458 /380055934/ [8d012240-9dfa-11ed-b540-edb3b50dbad1] called
+2023-01-27 05:25:00.578663  [Error] type 'int' is not a subtype of type 'String'
+#0      dashBoardText.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/pages/dash-board.page.dart:28:18)
+<asynchronous suspension>
+#1      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:99:21)
+<asynchronous suspension>
+#2      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:70:7)
+<asynchronous suspension>
+
+2023-01-27 05:25:23.881794 /380055934/ [8d012240-9dfa-11ed-b540-edb3b50dbad1] called
+2023-01-27 05:25:41.108692  [Error] type 'int' is not a subtype of type 'String'
+#0      dashBoardText.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/pages/dash-board.page.dart:28:18)
+<asynchronous suspension>
+#1      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:99:21)
+<asynchronous suspension>
+#2      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:70:7)
+<asynchronous suspension>
+
+2023-01-27 05:26:09.056062  [Program starting..] 
+2023-01-27 05:26:09.124730  [Server listening on port 8085] 
+2023-01-27 05:26:10.574542 /380055934/ [b945fd30-9dfa-11ed-9ca5-311ad5be8351] called
+2023-01-27 05:26:11.415600 /380055934/ [b946c081-9dfa-11ed-9ca5-311ad5be8351] called
+2023-01-27 05:26:18.076622  [Error] type 'int' is not a subtype of type 'String'
+#0      dashBoardText.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/pages/dash-board.page.dart:28:18)
+<asynchronous suspension>
+#1      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:99:21)
+<asynchronous suspension>
+#2      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:70:7)
+<asynchronous suspension>
+
+2023-01-27 05:26:44.798420 /380055934/ [b946c081-9dfa-11ed-9ca5-311ad5be8351] called
+2023-01-27 05:27:28.061151  [Program starting..] 
+2023-01-27 05:27:28.130108  [Server listening on port 8085] 
+2023-01-27 05:27:31.677043 /380055934/ [e85d3200-9dfa-11ed-b3a4-7b2a04530735] called
+2023-01-27 05:27:32.601382 /380055934/ [e85da732-9dfa-11ed-b3a4-7b2a04530735] called
+2023-01-27 05:27:38.195499  [Error] type 'int' is not a subtype of type 'String'
+#0      dashBoardText.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/pages/dash-board.page.dart:29:18)
+<asynchronous suspension>
+#1      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:99:21)
+<asynchronous suspension>
+#2      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:70:7)
+<asynchronous suspension>
+
+2023-01-27 05:29:05.407528  [Program starting..] 
+2023-01-27 05:29:05.477419  [Server listening on port 8085] 
+2023-01-27 05:29:06.741838 /380055934/ [226219c0-9dfb-11ed-9844-ab8c88229ca1] called
+2023-01-27 05:29:07.623543 /380055934/ [2262b602-9dfb-11ed-9844-ab8c88229ca1] called
+2023-01-27 05:29:12.229557  [Error] type 'int' is not a subtype of type 'String'
+#0      dashBoardText.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/pages/dash-board.page.dart:29:18)
+<asynchronous suspension>
+#1      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:99:21)
+<asynchronous suspension>
+#2      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:70:7)
+<asynchronous suspension>
+
+2023-01-27 05:29:20.941190 /380055934/ [2262b602-9dfb-11ed-9844-ab8c88229ca1] called
+2023-01-27 05:29:59.660553  [Error] type 'int' is not a subtype of type 'String'
+#0      dashBoardText.<anonymous closure> (file:///home/yukkop/Projects/gwp/vpn-system/vpn-telegram-bot/bin/pages/dash-board.page.dart:29:18)
+<asynchronous suspension>
+#1      Page._render (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:99:21)
+<asynchronous suspension>
+#2      Page._constructRender.<anonymous closure> (package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart:70:7)
+<asynchronous suspension>
+
+2023-01-27 05:31:24.984486  [Program starting..] 
+2023-01-27 05:31:25.054025  [Server listening on port 8085] 
+2023-01-27 05:31:57.185337  [Program starting..] 
+2023-01-27 05:31:57.251636  [Server listening on port 8085] 
+2023-01-27 05:31:59.432873 /380055934/ [88d73230-9dfb-11ed-8519-1dbcb0c0d130] called
+2023-01-27 05:32:05.361677 /380055934/ [88d7f580-9dfb-11ed-8519-1dbcb0c0d130] called
+2023-01-27 05:33:14.318954  [Program starting..] 
+2023-01-27 05:33:14.394370  [Server listening on port 8085] 
+2023-01-27 05:33:29.055548  [Program starting..] 
+2023-01-27 05:33:29.125978  [Server listening on port 8085] 
+2023-01-27 05:33:38.589751 /380055934/ [bf8af320-9dfb-11ed-881c-e70970e24006] called
+2023-01-27 05:33:40.150069 /380055934/ [bf8bb670-9dfb-11ed-881c-e70970e24006] called
+2023-01-27 05:34:02.422172  [Program starting..] 
+2023-01-27 05:34:02.528224  [Server listening on port 8085] 
+2023-01-27 05:34:06.836851  [Program starting..] 
+2023-01-27 05:34:06.914919  [Server listening on port 8085] 
+2023-01-27 05:34:08.421678 /380055934/ [d62ed920-9dfb-11ed-8f93-edf7099a5ae7] called
+2023-01-27 05:34:09.379714 /380055934/ [d62fc382-9dfb-11ed-8f93-edf7099a5ae7] called
+2023-01-27 05:34:11.451169 /380055934/ [d62fc381-9dfb-11ed-8f93-edf7099a5ae7] called
+2023-01-27 05:34:12.675398 /380055934/ [d62ed920-9dfb-11ed-8f93-edf7099a5ae7] called
+2023-01-27 05:34:13.469020 /380055934/ [d62f2740-9dfb-11ed-8f93-edf7099a5ae7] called
+2023-01-27 05:34:14.552093 /380055934/ [d62ed920-9dfb-11ed-8f93-edf7099a5ae7] called
