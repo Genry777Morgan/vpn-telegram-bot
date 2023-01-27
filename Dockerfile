@@ -18,7 +18,7 @@ FROM scratch
 COPY --from=build /runtime/ /
 COPY --from=build /app/bin/server /app/bin/
 COPY /config.yaml ./
-COPY /layoyts.yaml ./
+COPY /layouts.yaml ./
 
 # Start server.
 EXPOSE 8081
