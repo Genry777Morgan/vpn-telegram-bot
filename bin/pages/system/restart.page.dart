@@ -13,6 +13,6 @@ late final Page restart = Page(
 
 void restartKeyboard() {
   restart.changeKeyboard(Keyboard.list([
-    [Button.openPage(text: 'Ок', key: mainMenu.getKey())]
+    [Button.openPage(text: 'Ок', key: mainMenuEdit.getKey())]
   ]));
 }

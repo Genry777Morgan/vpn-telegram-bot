@@ -12,6 +12,6 @@ late final Page empty = Page(
 
 void emptyKeyboard() {
   empty.changeKeyboard(Keyboard.list([
-    [Button.openPage(text: 'Ок', key: mainMenu.getKey())]
+    [Button.openPage(text: 'Ок', key: mainMenuEdit.getKey())]
   ]));
 }

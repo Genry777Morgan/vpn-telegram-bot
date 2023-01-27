@@ -52,7 +52,10 @@ class EventController extends IController {
         message_id: int.parse(messageId),
         chat_id: userId,
         reply_markup: InlineKeyboardMarkup(inline_keyboard: [
-          [InlineKeyboardButton(text: 'Ок', callback_data: mainMenu.getKey())]
+          [
+            InlineKeyboardButton(
+                text: 'Ок', callback_data: mainMenuEdit.getKey())
+          ]
         ]));
 
     // MyGigaPage(

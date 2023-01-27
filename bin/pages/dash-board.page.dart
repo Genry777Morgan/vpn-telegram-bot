@@ -13,7 +13,7 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/text.hectic-tg.dart';
 import '../configurations.dart';
 import 'main.page.dart';
 import 'system/empty.page.dart';
-import 'test-period/test-period-instruction.page.dart';
+import 'region/instruction.message.dart';
 
 late final dashBoardText = Text.function((pageMessage, user) async {
   var response =
@@ -38,7 +38,7 @@ final respawnInstruction = Page(
   renderMethod: ((teleDart, message, user, text, markup) async {
     var teledart = GetIt.I<TeleDart>(); // TODO
     await teledart.deleteMessage(message.chat.id, message.message_id);
-    await testPeriodInstructionSend.render(message, user);
+    await instruction.render(message, user);
 
     Page.send(teleDart, message, user, text, markup);
   }),
@@ -109,7 +109,7 @@ void dashBoardKeyboard() {
       Button.openPage(
           text: 'Выслать конфиг повторно', key: respawnConfix.getKey())
     ],
-    [Button.openPage(text: 'Назад', key: mainMenu.getKey())]
+    [Button.openPage(text: 'Назад', key: mainMenuEdit.getKey())]
   ]);
 
   dashBoard.changeKeyboard(a);

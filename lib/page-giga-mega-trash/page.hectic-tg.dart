@@ -109,8 +109,7 @@ class Page {
     }
   }
 
-  @Deprecated(""" now useless in project """)
-  String stringf(String text, List<String> values) {
+  static String stringf(String text, List<String> values) {
     String result = '';
 
     List<String> textParts = text.split('%');

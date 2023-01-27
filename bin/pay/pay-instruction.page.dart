@@ -8,7 +8,7 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/text.hectic-tg.dart';
 
 import '../configurations.dart';
-import 'main.page.dart';
+import '../pages/main.page.dart';
 
 var priceForDay = 10;
 
@@ -93,15 +93,15 @@ late final payFor1Year = Page(
 
 void payKeyboard() {
   payFor1Day.changeKeyboard(Keyboard.list([
-    [Button.openPage(text: 'В меню', key: mainMenu.getKey())]
+    [Button.openPage(text: 'В меню', key: mainMenuEdit.getKey())]
   ]));
   payFor1Week.changeKeyboard(Keyboard.list([
-    [Button.openPage(text: 'В меню', key: mainMenu.getKey())]
+    [Button.openPage(text: 'В меню', key: mainMenuEdit.getKey())]
   ]));
   payFor1Month.changeKeyboard(Keyboard.list([
-    [Button.openPage(text: 'В меню', key: mainMenu.getKey())]
+    [Button.openPage(text: 'В меню', key: mainMenuEdit.getKey())]
   ]));
   payFor1Year.changeKeyboard(Keyboard.list([
-    [Button.openPage(text: 'В меню', key: mainMenu.getKey())]
+    [Button.openPage(text: 'В меню', key: mainMenuEdit.getKey())]
   ]));
 }

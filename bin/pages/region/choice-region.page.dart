@@ -8,15 +8,16 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/text.hectic-tg.dart';
 
 import '../../configurations.dart';
 import '../main.page.dart';
-import 'test-period-instruction.page.dart';
+import 'change-region.action.dart';
+import 'instruction.message.dart';
 
-late final testPeriodChoiceRegion = Page(
+late final regionChoice = Page(
   text: Text.string('''Какой регион желаете?'''),
   renderMethod: Page.edit,
 );
 
 void testPeriodChoiceRegionKeyboard() {
-  testPeriodChoiceRegion.changeKeyboard(
+  regionChoice.changeKeyboard(
     Keyboard.function((pageMessage, user) async {
       var response =
           await get(Uri.http(Configurations.backendHost, "/regions"));
@@ -27,10 +28,12 @@ void testPeriodChoiceRegionKeyboard() {
         arr.add([
           Button.openPage(
               text: (i['regionName'] == 'russia' ? 'Русский' : 'Германия'),
-              key: testPeriodInstruction.getKey())
+              key: (i['regionName'] == 'russia'
+                  ? changeRegionRussia.getKey()
+                  : changeRegionGermany.getKey()))
         ]);
       }
-      arr.add([Button.openPage(text: 'Назад', key: mainMenu.getKey())]);
+      arr.add([Button.openPage(text: 'Назад', key: mainMenuEdit.getKey())]);
 
       return arr;
     }),

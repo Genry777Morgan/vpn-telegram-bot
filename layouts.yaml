@@ -1,7 +1,14 @@
 ﻿ru:
   main:
-   message: ''
-   buttons:
+    message: "Привет!
+
+VPNster в телеграм!
+
+Простой в использовании VPN сервис."
+    buttons:
+      get-vpn: 'Получить ВПН'
+      rates: 'Тарифы'
+      dash-board: 'Личный кабинет'
   dash-board:
    message: ''
    buttons:

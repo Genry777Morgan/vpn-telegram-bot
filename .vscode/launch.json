@@ -8,7 +8,7 @@
             "name": "Dart",
             "type": "dart",
             "request": "launch",
-            "program": "bin/vpn_telegram_bot.dart"
+            "program": "bin/vpn-telegram-bot.source.dart"
         }
     ]
 }

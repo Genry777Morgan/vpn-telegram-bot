@@ -1,34 +1,27 @@
-import 'dart:convert';
-import 'dart:io' as io;
 import 'dart:io';
 
 import 'package:get_it/get_it.dart';
-import 'package:http/http.dart' as http;
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
 import 'package:teledart/teledart.dart';
 import 'package:teledart/telegram.dart';
 
-import 'package:vpn_telegram_bot/constants.dart';
+import 'package:vpn_telegram_bot/data/interfaces/dialog.data-source.interface.dart';
+import 'package:vpn_telegram_bot/data/yaml-dialog.data-source.dart';
 import 'package:vpn_telegram_bot/loger.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/button.hectic-tg.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/keyboard.hectic-tg.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/page.hectic-tg.dart';
-import 'package:vpn_telegram_bot/page-giga-mega-trash/text.hectic-tg.dart';
 import 'package:vpn_telegram_bot/page-giga-mega-trash/registrator.hectic-tg.dart';
 
 import 'configurations.dart';
 import 'controlers/event_contoller.dart';
 import 'pages/dash-board.page.dart';
 import 'pages/main.page.dart';
-import 'pages/pay.page.dart';
+import 'pay/pay-instruction.page.dart';
 import 'pages/rate.page.dart';
 import 'pages/system/empty.page.dart';
 import 'pages/system/restart.page.dart';
-import 'pages/test-period/test-period-choice-os.page.dart';
-import 'pages/test-period/test-period-choice-region.page.dart';
-import 'pages/test-period/test-period-instruction.page.dart';
+import 'pages/region/choice-region.page.dart';
+import 'pages/region/instruction.message.dart';
 
 Future<void> main() async {
   Loger.log('Program starting..');
@@ -55,14 +48,13 @@ Future<void> main() async {
   final teledart = GetIt.I<TeleDart>();
   //endregion
 
-  // GetIt.I.registerSingleton<DialogDataSourceInterface>(YamlDialogDataSource());
+  GetIt.I.registerSingleton<DialogDataSourceInterface>(YamlDialogDataSource());
 
   payKeyboard();
   restartKeyboard();
   rateKeyboard();
   mainKeyboard();
   dashBoardKeyboard();
-  testPeriodChoiceOsKeyboard();
   testPeriodChoiceRegionKeyboard();
   testPeriodInstructionKeyboard();
   emptyKeyboard();

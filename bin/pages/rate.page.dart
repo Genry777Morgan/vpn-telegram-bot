@@ -8,7 +8,7 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/text.hectic-tg.dart';
 
 import '../configurations.dart';
 import 'main.page.dart';
-import 'pay.page.dart';
+import '../pay/pay-instruction.page.dart';
 
 late final rate = Page(
   text: Text.function((pageMessage, user) async {
@@ -28,6 +28,6 @@ void rateKeyboard() {
     [Button.openPage(text: '1 неделя', key: payFor1Week.getKey())],
     [Button.openPage(text: '1 месяц', key: payFor1Month.getKey())],
     [Button.openPage(text: '1 год', key: payFor1Year.getKey())],
-    [Button.openPage(text: 'Назад', key: mainMenu.getKey())]
+    [Button.openPage(text: 'Назад', key: mainMenuEdit.getKey())]
   ]));
 }
