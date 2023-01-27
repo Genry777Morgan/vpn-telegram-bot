@@ -130,8 +130,14 @@ class Page {
   ///
   ///
   static Future send(TeleDart teleDart, Message pageMessage, User user,
-      String text, InlineKeyboardMarkup? markup) async {
-    await teleDart.sendMessage(pageMessage.chat.id, text, reply_markup: markup);
+      String text, InlineKeyboardMarkup? markup,
+      [parseMode = "Markdown"]) async {
+    await teleDart.sendMessage(
+      pageMessage.chat.id,
+      text,
+      reply_markup: markup,
+      parse_mode: parseMode,
+    );
   }
 
   /// send a photo
@@ -147,7 +153,8 @@ class Page {
   /// удаляет старое сообщкние и отправляет новоре
   /// Для тех случаев когда нужно сместить интерфейс в низ диалога
   static Future replase(TeleDart teleDart, int? chatId, String text,
-      InlineKeyboardMarkup? markup, int? messageId) async {
+      InlineKeyboardMarkup? markup, int? messageId,
+      [parseMode = "Markdown"]) async {
     if (messageId == null) {
       Loger.log('Warning',
           body: 'method "replase" cannot delite message if message Id is null');
@@ -155,18 +162,25 @@ class Page {
       teleDart.deleteMessage(chatId, messageId);
     }
 
-    teleDart.sendMessage(chatId, text, reply_markup: markup);
+    teleDart.sendMessage(
+      chatId,
+      text,
+      reply_markup: markup,
+      parse_mode: parseMode,
+    );
   }
 
   ///
   ///
   static Future edit(TeleDart teleDart, Message pageMessage, User user,
-      String text, InlineKeyboardMarkup? markup) async {
+      String text, InlineKeyboardMarkup? markup,
+      [parseMode = "Markdown"]) async {
     teleDart.editMessageText(
       text,
       chat_id: pageMessage.chat.id,
       message_id: pageMessage.message_id,
       reply_markup: markup,
+      parse_mode: parseMode,
     );
   }
   // end regiong

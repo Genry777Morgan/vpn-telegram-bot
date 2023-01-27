@@ -8,5 +8,5 @@ late final testPeriodAction = Page(
     text: Text.string('action'),
     renderMethod: (teleDart, message, user, text, markup) async {
       await testPeriodMessage.render(message, user);
-      regionChoice.render(message, user);
+      regionChoiceReplace.render(message, user);
     });

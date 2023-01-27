@@ -12,6 +12,7 @@ import 'package:vpn_telegram_bot/page-giga-mega-trash/text.hectic-tg.dart';
 
 import '../configurations.dart';
 import 'main.page.dart';
+import 'region/choice-region.page.dart';
 import 'system/empty.page.dart';
 import 'region/instruction.message.dart';
 
@@ -99,15 +100,8 @@ void dashBoardKeyboard() {
       Button.openPage(text: 'Связаться с поддержкой', key: empty.getKey())
     ], // TODO
     [
-      Button.openPage(text: 'Сменить сервер VPNstera', key: empty.getKey())
-    ], // TODO
-    [
       Button.openPage(
-          text: 'Выслать инструкцию повторно', key: respawnInstruction.getKey())
-    ], // TODO
-    [
-      Button.openPage(
-          text: 'Выслать конфиг повторно', key: respawnConfix.getKey())
+          text: 'Сменить сервер VPNstera', key: regionChoiceEdit.getKey())
     ],
     [Button.openPage(text: 'Назад', key: mainMenuEdit.getKey())]
   ]);

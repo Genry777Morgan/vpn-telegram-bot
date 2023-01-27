@@ -11,31 +11,37 @@ import '../main.page.dart';
 import 'change-region.action.dart';
 import 'instruction.message.dart';
 
-late final regionChoice = Page(
+late final regionChoiceEdit = Page(
   text: Text.string('''Какой регион желаете?'''),
   renderMethod: Page.edit,
 );
 
+late final regionChoiceReplace = Page(
+  text: Text.string('''Какой регион желаете?'''),
+  renderMethod: (teleDart, message, user, text, markup) async {
+    Page.replase(teleDart, message.chat.id, text, markup, message.message_id);
+  },
+);
+
 void testPeriodChoiceRegionKeyboard() {
-  regionChoice.changeKeyboard(
-    Keyboard.function((pageMessage, user) async {
-      var response =
-          await get(Uri.http(Configurations.backendHost, "/regions"));
+  var keyboard = Keyboard.function((pageMessage, user) async {
+    var response = await get(Uri.http(Configurations.backendHost, "/regions"));
 
-      var responseBody = jsonDecode(response.body);
-      List<List<Button>> arr = [];
-      for (var i in responseBody) {
-        arr.add([
-          Button.openPage(
-              text: (i['regionName'] == 'russia' ? 'Русский' : 'Германия'),
-              key: (i['regionName'] == 'russia'
-                  ? changeRegionRussia.getKey()
-                  : changeRegionGermany.getKey()))
-        ]);
-      }
-      arr.add([Button.openPage(text: 'Назад', key: mainMenuEdit.getKey())]);
+    var responseBody = jsonDecode(response.body);
+    List<List<Button>> arr = [];
+    for (var i in responseBody) {
+      arr.add([
+        Button.openPage(
+            text: (i['regionName'] == 'russia' ? 'Русский' : 'Германия'),
+            key: (i['regionName'] == 'russia'
+                ? changeRegionRussia.getKey()
+                : changeRegionGermany.getKey()))
+      ]);
+    }
+    arr.add([Button.openPage(text: 'Назад', key: mainMenuEdit.getKey())]);
 
-      return arr;
-    }),
-  );
+    return arr;
+  });
+  regionChoiceEdit.changeKeyboard(keyboard);
+  regionChoiceReplace.changeKeyboard(keyboard);
 }
